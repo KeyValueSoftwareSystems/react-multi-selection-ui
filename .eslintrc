@@ -1,0 +1,41 @@
+{
+  "ignorePatterns": ["**/*.d.ts", "node_modules/", "src/stories", "src/lib/tests", "webpack.config.js", "jest,config.js"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "react/prop-types": "warn",
+    "indent": ["error", 2],
+    "arrow-body-style": ["error", "as-needed"],
+    "no-trailing-spaces":"error",
+    "comma-dangle":"error",
+    "default-case":"error",
+    "block-spacing": "error",
+    "max-len":["warn", 150],
+    "space-before-blocks":"error",
+    "prefer-spread": ["off"],
+    "react-hooks/exhaustive-deps": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "^18.0.2"
+    }
+  }
+}
