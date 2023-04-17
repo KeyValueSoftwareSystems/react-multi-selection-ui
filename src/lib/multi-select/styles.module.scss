@@ -1,0 +1,126 @@
+.searchContainer {
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  padding: 0px 12px;
+  align-items: center;
+  border: 1px solid #E3E3E3;
+  margin: 18px 16px;
+  position: relative;
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #1C1C1C;
+    font-size: 16px;
+    font-family: 'Poppins';
+  }
+  .closeIcon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 16px;
+    height: 16px;
+  }
+  .imageDiv {
+    width: 20px;
+    height: 20px;
+  }
+}
+.listWrapper {
+  box-shadow: 1px 2px 12px 0px #57575729;
+  border-radius: 8px;
+  width: 100%;
+  height: inherit;
+}
+.container {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  min-height: 370px;
+  .selectionListContainer {
+    height: 100%;
+    .zeroStateImage {
+      height: 65px;
+      width: 65px;
+      margin-bottom: 30px;
+    }
+    .listContainer {
+      height: calc(100% - 76px);
+      overflow-y: auto;
+      .eachItem {
+        color: #1C1C1C;
+        font-size: 16px;
+        padding: 12px 16px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+        &.activeItem {
+          background: #F8F8FF;
+          border-bottom: 1px solid #E3E3E3 !important
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+        input {
+          border: 1.6px solid #BCBCBD;
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          outline: none;
+          &:checked {
+            content: url('../../assets/State=Selected.svg');
+            border-radius: 8px;
+          }
+        }
+      }
+      .eachItem:not(:last-child) {
+        border-bottom: 1px solid #F6F6F9
+      }
+    }
+  }
+}
+.zeroState {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.selectedListContainer {
+  margin: 21px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+  width: 96%;
+  max-height: calc(100% - 42px);
+  overflow-y: auto;
+  .zeroStateImage {
+    width: 112px;
+    height: 112px;
+  }
+  .eachSelectedItem {
+    width: 44.5%;
+    border: 1px solid #E3E3E3;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 26px;
+    align-items: center;
+    font-size: 16px;
+    &:hover {
+      opacity: 0.7;
+    }
+    .closeIcon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

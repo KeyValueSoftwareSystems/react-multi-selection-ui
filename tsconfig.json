@@ -10,7 +10,6 @@
     "noEmit": false,
     "declaration": true,
     "skipLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["es2018", "dom"],
     "moduleResolution": "node",

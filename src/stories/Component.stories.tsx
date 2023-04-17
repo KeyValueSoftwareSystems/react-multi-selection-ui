@@ -11,11 +11,28 @@ export default {
     },
   } as ComponentMeta<typeof Component>;
 
-  const Template: ComponentStory<typeof Component> = () => <Component />;
+  const Template: ComponentStory<typeof Component> = (props) => <Component {...props}/>;
 
 export const ComponentExample = Template.bind({});
 ComponentExample.args = {
-  steps: [{
-    label: 'Jane Doe',
-  }],
+  productList: [{
+    id: 1,
+    name: 'Upload new pictures'
+  },
+  {
+    id: 2,
+    name: 'Pay rent'
+  },
+  {
+    id: 3,
+    name: 'Go Shopping'
+  },
+  {
+    id: 4,
+    name: 'Call friends'
+  },
+  {
+    id: 5,
+    name: 'Read books'
+  }]
 };

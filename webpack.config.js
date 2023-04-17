@@ -26,7 +26,7 @@ const banner = `
 module.exports = {
   mode: "production",
   devtool: 'source-map',
-  entry: './src/lib/index.ts',
+  entry: './src/lib/index.tsx',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'build'),
@@ -50,15 +50,27 @@ module.exports = {
         test: /\.(m|j|t)s$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          }
         }
       },
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: "css-loader", options: { sourceMap: true } },
-        ],
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      { 
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.svg$/,
+        use: 'url-loader'
       }
     ]
   },
@@ -69,6 +81,6 @@ module.exports = {
     new webpack.BannerPlugin(banner)
   ],
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json']
   }
 };

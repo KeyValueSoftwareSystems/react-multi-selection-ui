@@ -1,7 +1,3 @@
-import React from 'react';
-import "./index.css";
+import MultiSelect from './multi-select';
 
-const MyLibrary = () => (
-  <div>Your component goes here</div>
-)
-export default MyLibrary;
+export default MultiSelect;
