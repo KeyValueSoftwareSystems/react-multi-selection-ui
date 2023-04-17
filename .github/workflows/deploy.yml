@@ -43,11 +43,11 @@ jobs:
         shell: bash
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
-          if [ "$BRANCH" == 'master' ]
+          if [ "$BRANCH" == 'main' ]
             then
               echo "Branch validation Successful"
             else
-              echo "Releases only taken from master branch"
+              echo "Releases only taken from main branch"
               exit 1
           fi
 

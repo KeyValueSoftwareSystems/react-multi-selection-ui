@@ -20,12 +20,12 @@
     "node": ">=10"
   },
   "repository": {
-    "type": "bitbucket",
-    "url": "https://bitbucket.org/keyvaluesoftwaresystems/kv-boilerplate-ts"
+    "type": "github",
+    "url": "https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui"
   },
   "author": "Keyvalue",
   "license": "",
-  "homepage": "https://bitbucket.org/keyvaluesoftwaresystems/kv-boilerplate-ts",
+  "homepage": "https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui",
   "keywords": [
     "library",
     "starter",
