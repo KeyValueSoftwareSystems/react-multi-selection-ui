@@ -76,7 +76,7 @@ jobs:
           git config user.email github-actions@github.com
           git add package.json package-lock.json
           git commit -m "Bump version from $OLD_VERSION to $NEW_VERSION"
-          git push origin HEAD:master
+          git push origin HEAD:main
 
       - name: Build Package
         run: npm run build
@@ -90,7 +90,7 @@ jobs:
           # Revert package.json and package-lock.json to the previous version
           npm version ${{ env.latest_version }} --no-git-tag-version
           git commit -am "Revert to version ${{ env.latest_version }}"
-          git push origin HEAD:master
+          git push origin HEAD:main
         if: failure()
 
       - name: Create GitHub release
