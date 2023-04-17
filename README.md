@@ -4,7 +4,7 @@
 
   
 
-<a  href="https://www.npmjs.com/package/react-dot-matrix-chart"><img  src="https://badgen.net/npm/v/react-dot-matrix-chart?color=blue"  alt="npm version"></a>  <a  href="https://www.npmjs.com/package/react-dot-matrix-chart"  ><img  src="https://img.shields.io/npm/dw/react-dot-matrix-chart?label=Downloads"  /></a>  <a  href="https://github.com/KeyValueSoftwareSystems/react-dot-matrix-chart"><img  src="https://github.com/KeyValueSoftwareSystems/react-dot-matrix-chart/actions/workflows/deploy.yml/badge.svg"  alt=""  /></a>
+<a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"><img  src="https://badgen.net/npm/v/@keyvaluesystems/react-multi-selection-ui-component?color=blue"  alt="npm version"></a>  <a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"  ><img  src="https://img.shields.io/npm/dw/@keyvaluesystems/react-multi-selection-ui-component?label=Downloads"  /></a>  <a  href="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui"><img  src="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui/actions/workflows/deploy.yml/badge.svg"  alt=""  /></a>
 
   
 
@@ -18,7 +18,7 @@
 
   
 
-Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/dot-matrix-chart-hqw9z0"  >here</a>
+Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/mulit-selection-ui-gzcfrn">here</a>
 
   
 
@@ -199,8 +199,8 @@ All the default styles provided by this package are overridable using the `style
 the below code shows all the overridable styles:
 
 ```jsx
-<DotMatrix
- dataPoints={dataPointsArray}
+<MultiSelection
+ productList={productListArray}
  styles={{
 	SelectionListZeroState?: () =>  ({...styles}),
 	SelectedListZeroState?: () =>  ({...styles}),
