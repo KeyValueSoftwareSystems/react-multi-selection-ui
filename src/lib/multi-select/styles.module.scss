@@ -98,6 +98,8 @@
   width: 96%;
   max-height: calc(100% - 42px);
   overflow-y: auto;
+  align-content: flex-start;
+  height: 100%;
   .zeroStateImage {
     width: 112px;
     height: 112px;

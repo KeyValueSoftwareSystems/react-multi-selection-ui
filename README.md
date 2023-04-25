@@ -18,7 +18,7 @@
 
   
 
-Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/mulit-selection-ui-gzcfrn">here</a>
+Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/multi-selection-ui-gzcfrn">here</a>
 
   
 
@@ -26,13 +26,13 @@ Try tweaking a multi selection ui component using this codesandbox link <a  href
 
   
 
-The easiest way to use react-multi-selection-ui is to install it from npm and build it into your app with Webpack.
+The easiest way to use react-multi-selection-ui-component is to install it from npm and build it into your app with Webpack.
 
   
 
 ```bash
 
-npm install  @keyvaluesystems/react-multi-selection-ui
+npm install  @keyvaluesystems/react-multi-selection-ui-component
 
 ```
 
@@ -46,7 +46,7 @@ React Multi Selection UI can run in a very basic mode by just providing the `pro
 
 ```jsx
 
-import  MultiSelection  from  '@keyvaluesystems/react-multi-selection-ui';
+import  MultiSelection  from  '@keyvaluesystems/react-multi-selection-ui-component';
 
 <MultiSelection
   productList={productListArray}

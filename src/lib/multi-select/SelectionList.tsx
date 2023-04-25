@@ -33,7 +33,7 @@ const SelectionList = (props: SelectionListPropType): JSX.Element => {
   } = props;
 
   const isItemsPresentInList = useMemo(() => (
-    list?.length > 0 && ((hideSelected && list.filter((e) => e.status === PRODUCT_UNSELECTED_STATUS)?.length > 0) || !hideSelected)
+    list?.length > 0 && ((hideSelected && list.filter((e) => !e.status || e.status === PRODUCT_UNSELECTED_STATUS)?.length > 0) || !hideSelected)
   ), [list]);
   const searchValue = (value: string): void => {
     if (onSearch?.name === 'mockConstructor') {
