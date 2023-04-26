@@ -36,13 +36,12 @@ const SelectionList = (props: SelectionListPropType): JSX.Element => {
     list?.length > 0 && ((hideSelected && list.filter((e) => !e.status || e.status === PRODUCT_UNSELECTED_STATUS)?.length > 0) || !hideSelected)
   ), [list]);
   const searchValue = (value: string): void => {
-    if (onSearch?.name === 'mockConstructor') {
-      const products = [...productList];
-      setList(products.filter((e) => e.name.indexOf(value) !== -1));
-    }
-    else if (onSearch) {
+    if (onSearch) {
       onSearch(value);
+      return;
     }
+    const products = [...productList];
+    setList(products.filter((e) => e.name.indexOf(value) !== -1));
   }
 
   const changeStatus = (index: number): void => {

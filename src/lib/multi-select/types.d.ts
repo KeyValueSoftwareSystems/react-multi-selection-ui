@@ -3,7 +3,7 @@ export interface MultiSelectPropType {
   showCheckbox?: boolean,
   hideSelected?: boolean,
   hideSearch?: boolean,
-  onSearch?: (value: string) => void,
+  onSearch?(value: string): void,
   setSelectedValues?: (values: eachProductType[]) => {},
   searchPlaceholder?: string,
   zeroState?: {
