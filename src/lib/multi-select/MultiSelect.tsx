@@ -70,7 +70,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
       onSearch(value);
       return;
     }
-    setList(options.filter((e) => (e.name?.toLowerCase()).indexOf(value) !== -1));
+    setList(options.filter((e) => (e.name?.toLowerCase()).indexOf(value?.toLowerCase()) !== -1));
   }
 
   const onOptionClick = (id: number | string): void => {
@@ -121,7 +121,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
 
   const chips = useMemo(()=>(
     options?.filter((item)=> selectedIds.includes(item.id))
-  ), [options, selectedIds])
+  ), [options, selectedIds]);
 
   return (
     <div
@@ -157,12 +157,12 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
             </div>
           )}
         </div>
-        <button type='button' className={classes.buttonIcon} onClick={onArrowClick}>
+        <button type='button' className={classes.buttonIcon} onClick={onArrowClick} id="down-arrow">
           <img src={Arrow || DownArrow} className={classes.rotation} style={{ transform: `rotate(${isModalVisible ? '180deg' :'0deg'})`, ...getStyles(Elements.ArrowIcon, styles)}} />
         </button>
       </div>
       {!isModalVisible && helperText && (
-        <div className={hasError? classes.error: classes.helperText} style={getStyles(Elements.HelperText, styles)}>
+        <div id="helper-text" className={hasError? classes.error: classes.helperText} style={getStyles(Elements.HelperText, styles)}>
           {helperText}
         </div>
       )}
@@ -171,6 +171,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
           className={classes.listContainer}
           ref={modalRef}
           style={{ maxHeight }}
+          id="menu-list"
         >
           <MenuListing
             list={list}

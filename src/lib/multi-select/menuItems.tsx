@@ -21,28 +21,30 @@ const OptionListingModal = (props: ModalProps):JSX.Element => {
   return (
     <>
     {list.length && (list.length !== selectedIds.length || !hideSelected) ?
-      list?.map((item: OptionType, listIndex: number): JSX.Element => (
+      list?.map((item: OptionType): JSX.Element => (
         ((hideSelected && !selectedIds.includes(item.id)) || (!hideSelected)) && (
-          <div
+          <button
             key={item.id}
             className={classes.eachItem}
             onClick={(): void => onOptionClick(item.id)}
             style={getStyles(!selectedIds.includes(item.id) ? Elements.UnSelectedMenuItem :Elements.SelectedMenuItem, styles)}
-            id={`item-${listIndex}`}
+            id={`option-card-${item.id}`}
+            data-testid="option-card"
           >
             {showCheckbox && (
               selectedIds.includes(item.id)
                 ? <div
                   className={`${classes.checkbox} ${classes.icon}`}
                   style={{ backgroundImage: `url(${icon})`, ...getStyles(Elements.CheckedIcon, styles)}}
+                  id="checked-checkbox"
                 />
-                : <div className={`${classes.unchecked} ${classes.icon}`}  style={getStyles(Elements.UnCheckedIcon, styles)}/>
+                : <div className={`${classes.unchecked} ${classes.icon}`}  style={getStyles(Elements.UnCheckedIcon, styles)} id="unchecked-checkbox" />
             )}
             <div
-              id={`name-${listIndex}`}>
+              id="label">
               {item.name}
             </div>
-          </div>
+          </button>
         )
       ) || <></>)
       :

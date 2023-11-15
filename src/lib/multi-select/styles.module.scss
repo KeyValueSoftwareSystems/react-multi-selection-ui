@@ -74,6 +74,11 @@
   gap: 10px;
   align-items: center;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  font-family: auto;
   &.activeItem {
     background: #F8F8FF;
     border-bottom: 1px solid #E3E3E3 !important

@@ -31,11 +31,13 @@ const Chips = (props : ChipListPropType) : JSX.Element => {
             key={item.id}
             className={classes.chip}
             style={getStyles(Elements.ChipComponent, styles)}
+            id="chip"
           >
             <div id={`selected-chip-${item.id}`}>
               {item.name}
             </div>
-            <button 
+            <button
+            id={`chip-close-${item.id}`}
             className={classes.buttonIcon}
             onClick={(): void => onClick(item.id)}>
               <img src={icon ?? closeIcon} alt='' className={classes.chipClose} style={getStyles(Elements.ChipCloseIcon, styles)}/>
@@ -43,7 +45,7 @@ const Chips = (props : ChipListPropType) : JSX.Element => {
           </div>
         ))}
         {!showAllChips&& !!thresholdForBubble && list?.length  > thresholdForBubble && (
-          <button className={`${classes.buttonIcon} ${classes.hiddenChipsCount}`} style={getStyles(Elements.HiddenChipsIndicator, styles)}>
+          <button id="hidden-chip-count" className={`${classes.buttonIcon} ${classes.hiddenChipsCount}`} style={getStyles(Elements.HiddenChipsIndicator, styles)}>
             +{hiddenChipsCount}
           </button>
         )}

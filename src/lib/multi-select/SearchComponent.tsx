@@ -37,8 +37,9 @@ const SearchComponent = (props: SearchComponentPropType, ref: ForwardedRef<HTMLI
         className={classes.searchInput}
       />
       {searchTerm && (
-        <div
-          className={classes.icon}
+        <button
+          id="clear-search-button"
+          className={`${classes.buttonIcon} ${classes.icon}`}
           style={{backgroundImage: `url(${closeIcon})`}}
           onClick={():void => setSearchTerm('')}
         />
