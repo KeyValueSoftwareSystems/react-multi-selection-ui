@@ -88,9 +88,18 @@ const  optionsArray = [
 This release includes breaking changes, new features, and updates. Please read this document carefully before upgrading
 
 ### Breaking Changes
+
 - `productList` prop is renamed to `options` with an additional checked item in the object
 - `zeroState` prop is deprecated
--  Major changes in the UI behaviour
+-  Major changes in the UI behavior
+
+### Migration Steps
+
+- `options` props can be used to pass the list
+- `searchPlaceholder` is replaced with `placeholder`
+- `renderEmptyItem` can be used to pass the empty state component
+- `setSelectedValues` is replaced with `onItemClick`
+
 
 ## Props
 
@@ -150,7 +159,7 @@ The callback function which will be triggered on text change in the search box
 <tr>
 <td><code><b>onItemClick?:</b> function</code></td>
 <td>
-The callback function which will be triggered on the clicking the check box and chips. Can be used for obtaining the selected values
+The callback function which will be triggered on clicking the check box and chip's close button. Can be used for obtaining the selected values
 </td>
 <td><code>undefined</code></td>
 </tr>
@@ -164,7 +173,7 @@ Provides you with a bunch of callback functions to override the default styles.
 <tr>
 <td><code><b>showChips?:</b> boolean</code></td>
 <td>
-The boolean value to control the display selected options as chips.
+The boolean value to control the display of selected options as chips.
 </td>
 <td><code>true</code></td>
 </tr>
@@ -176,7 +185,7 @@ The prop to control the height of the dropdown modal.
 <td><code>'100%'</code></td>
 </tr>
 <tr>
-<td><code><b>renderEmptyItem?:</b> undefined</code></td>
+<td><code><b>renderEmptyItem?:</b> JSX</code></td>
 <td>
 The JSX element to be shown in case of empty result.
 </td>
@@ -190,7 +199,7 @@ The boolean value to show loading state in the dropdown list.
 <td><code>false</code></td>
 </tr>
 <tr>
-<td><code><b>renderLoader?:</b> undefined</code></td>
+<td><code><b>renderLoader?:</b> JSX</code></td>
 <td>
 The JSX element to be shown while loading.
 </td>
@@ -204,9 +213,9 @@ The boolean value to indicate error.
 <td><code>false</code></td>
 </tr>
 <tr>
-<td><code><b>helperText?:</b> string</code></td>
+<td><code><b>helperText?:</b> ''</code></td>
 <td>
-The message to be shown in case of error.
+To display an additional message.
 </td>
 <td><code>''</code></td>
 </tr>
@@ -215,7 +224,7 @@ The message to be shown in case of error.
 <td>
 To limit the number of chips shown.
 </td>
-<td><code>''</code></td>
+<td><code>length of options array</code></td>
 </tr>
 <tr>
 <td><code><b>icons?:</b> object</code></td>
@@ -242,7 +251,14 @@ the below code shows all the overridable styles:
     SelectedMenuItem?: () => ({...styles}),
     UnSelectedMenuItem?: () => ({...styles}),
     ChipComponent?: () => ({...styles}),
-    HelperText?: () => ({...styles})
+    HelperText?: () => ({...styles}),
+    InputBox?: () => ({...styles}),
+    CheckedIcon?: () => ({...styles}),
+    UnCheckedIcon?: () => ({...styles}),
+    ChipCloseIcon?: () => ({...styles}),
+    SearchIcon?: () => ({...styles}),
+    ArrowIcon?: () => ({...styles}),
+    HiddenChipsIndicator?: () => ({...styles})
  }}
 />
 ```
