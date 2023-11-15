@@ -13,7 +13,7 @@ const getAllById = queryAllByAttribute.bind(null, 'id');
 
 test("If Search is rendered in Selection List", async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },
@@ -29,7 +29,7 @@ test("If Search is rendered in Selection List", async () => {
 
 test('If Search component is not rendered on passing prop', async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },
@@ -46,7 +46,7 @@ test('If Search component is not rendered on passing prop', async () => {
 
 test('If checkbox is rendered in selection test', async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },
@@ -62,7 +62,7 @@ test('If checkbox is rendered in selection test', async () => {
 
 test('If checkbox not rendered if prop given', async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },
@@ -79,7 +79,7 @@ test('If checkbox not rendered if prop given', async () => {
 
 test('If search is working', async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },
@@ -97,7 +97,7 @@ test('If search is working', async () => {
 
 test("If selected item is moved to the other list", async () => {
   const props: MultiSelectPropType = {
-    productList: [{
+    options: [{
       id: 1,
       name: 'Product 1'
     },

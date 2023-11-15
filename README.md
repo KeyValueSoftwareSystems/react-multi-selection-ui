@@ -9,7 +9,7 @@
   
 
 <div  align="center">
-<img  src="./screenshot.png"  alt=""  width="830"  height="193"/>
+<img  src="./screenshot.png"  alt=""  width="400"  height="230"/>
 </div>
 
   
@@ -40,7 +40,7 @@ You’ll need to install React separately since it isn't included in the package
 
 ## Usage
 
-React Multi Selection UI can run in a very basic mode by just providing the `productList` like given below:
+React Multi Selection UI can run in a very basic mode by just providing the `options` like given below:
 
   
 
@@ -49,63 +49,49 @@ React Multi Selection UI can run in a very basic mode by just providing the `pro
 import  MultiSelection  from  '@keyvaluesystems/react-multi-selection-ui-component';
 
 <MultiSelection
-  productList={productListArray}
+  options={optionsArray}
 />
 
 ```
 
   
 
-The productList is an array of objects with the following keys:
+The optionsArray is an array of objects with the following keys:
 
   
 
--  `id` - a unique identifier for each product
+-  `id` - a unique identifier for each option
 
--  `name` - a string that represents each product
+-  `name` - a string that represents each option label
 
-An example for productList array is shown below:
+-  `checked` - an optional boolean value to indicate the default state
+
+An example for options array is shown below:
 
   
 
 ```jsx
-const  productListArray = [
+const  optionsArray = [
   {
     id:  1,
-    name:  'Product 1'
+    name:  'Option 1',
+    checked: true
   },
   {
     id:  2,
-    name:  'Product 2'
+    name:  'Option 2',
   }
 ]
 ```
+## v1.0.0 (Major Version Change)
 
-You can use `hideSearch` prop to hide/show the search feature in the selection list (left menu).
-With the help of `showCheckbox` prop, the checkbox near the selection list can be shown/hidden.
-`searchPlaceholder` gives an option to customise the placeholder shown inside the Search text box.
- 
-```jsx
-<MultiSelection
- productList={productListArray}
- hideSearch={false}
- showCheckbox={true}
- searchPlaceholder="Search"
-/>
-```
+This release includes breaking changes, new features, and updates. Please read this document carefully before upgrading
 
-  
+### Breaking Changes
+- `productList` prop is renamed to `options` with an additional checked item in the object
+- `zeroState` prop is deprecated
+-  Major changes in the UI behaviour
 
-You can specify whether to show or hide the selected values in the selection list(left list) with the help of `hideSelected` prop.
-
-Zero-states can be customised for both list using `zeroState` prop. We can provide JSX elements for both selected list and selection list in this.
-
-```jsx
-<MultiSelection
- productList={productListArray}
- hideSelected={true}
-/>
-```
 ## Props
 
   Props that can be passed to the component are listed below:
@@ -120,9 +106,9 @@ Zero-states can be customised for both list using `zeroState` prop. We can provi
 </thead>
 <tbody>
 <tr>
-<td><code><b>productList:</b> object[]</code></td>
+<td><code><b>options:</b> object[]</code></td>
 <td>
-An array of product objects to specifying the id and name of each product
+An array of objects to specify the id, name and default state of each option
 </td>
 <td><code>[]</code></td>
 </tr>
@@ -134,18 +120,18 @@ The boolean value to control the display of checkbox in the selection list
 <td><code>true</code></td>
 </tr>
 <tr>
-<td><code><b>searchPlaceholder?:</b> string</code></td>
+<td><code><b>placeholder?:</b> string</code></td>
 <td>
-The placeholder value for the search text box
+The placeholder value for the search text box if search is enabled and default text shown in the box if search is disabled
 </td>
-<td><code>true</code></td>
+<td><code>'Choose an option'</code></td>
 </tr>
 <tr>
 <td><code><b>hideSelected?:</b> boolean</code></td>
 <td>
-The boolean value to control the display of selected values in the selected list(right list)
+The boolean value to control the display of selected values in the list
 </td>
-<td><code>'Search products'</code></td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td><code><b>hideSearch?:</b> boolean</code></td>
@@ -155,20 +141,6 @@ The boolean value to control the display of search text box in the selection lis
 <td><code>false</code></td>
 </tr>
 <tr>
-<td><code><b>hideSelected?:</b> boolean</code></td>
-<td>
-The boolean value to control the display of selected values in the selected list(right list)
-</td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td><code><b>zeroState?:</b> object</code></td>
-<td>
-To specify the zerostate components to be rendered in both lists
-</td>
-<td><code>{selectionList: undefined, selectedList: undefined}</code></td>
-</tr>
-<tr>
 <td><code><b>onSearch?:</b> function</code></td>
 <td>
 The callback function which will be triggered on text change in the search box
@@ -176,9 +148,9 @@ The callback function which will be triggered on text change in the search box
 <td><code>undefined</code></td>
 </tr>
 <tr>
-<td><code><b>setSelectedValues?:</b> function</code></td>
+<td><code><b>onItemClick?:</b> function</code></td>
 <td>
-The callback function which will be triggered on the selection of product list values. Can be used for obtaining the selected values
+The callback function which will be triggered on the clicking the check box and chips. Can be used for obtaining the selected values
 </td>
 <td><code>undefined</code></td>
 </tr>
@@ -186,6 +158,69 @@ The callback function which will be triggered on the selection of product list v
 <td><code><b>styles?:</b> object</code></td>
 <td>
 Provides you with a bunch of callback functions to override the default styles.
+</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code><b>showChips?:</b> boolean</code></td>
+<td>
+The boolean value to control the display selected options as chips.
+</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code><b>maxHeight?:</b> string | number</code></td>
+<td>
+The prop to control the height of the dropdown modal.
+</td>
+<td><code>'100%'</code></td>
+</tr>
+<tr>
+<td><code><b>renderEmptyItem?:</b> undefined</code></td>
+<td>
+The JSX element to be shown in case of empty result.
+</td>
+<td><code>No other options</code></td>
+</tr>
+<tr>
+<td><code><b>isLoading?:</b> boolean</code></td>
+<td>
+The boolean value to show loading state in the dropdown list.
+</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code><b>renderLoader?:</b> undefined</code></td>
+<td>
+The JSX element to be shown while loading.
+</td>
+<td><code>Default loader component</code></td>
+</tr>
+<tr>
+<td><code><b>hasError?:</b> boolean</code></td>
+<td>
+The boolean value to indicate error.
+</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code><b>helperText?:</b> string</code></td>
+<td>
+The message to be shown in case of error.
+</td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code><b>thresholdForBubble?:</b> number</code></td>
+<td>
+To limit the number of chips shown.
+</td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code><b>icons?:</b> object</code></td>
+<td>
+Provides you with an object to replace the default icons used.
 </td>
 <td><code>undefined</code></td>
 </tr>
@@ -200,22 +235,49 @@ the below code shows all the overridable styles:
 
 ```jsx
 <MultiSelection
- productList={productListArray}
+ options={optionsArray}
  styles={{
-	SelectionListZeroState?: () =>  ({...styles}),
-	SelectedListZeroState?: () =>  ({...styles}),
-	SearchComponent?: () =>  ({...styles}),
-	ProductComponent?: () =>  ({...styles}),
-	SelectedComponent?: () =>  ({...styles}),
-	SelectedCloseIcon?: () =>  ({...styles}),
-	Container?: () =>  ({...styles})
+    Container?: () => ({...styles}),
+    SearchComponent?: () => ({...styles}),
+    SelectedMenuItem?: () => ({...styles}),
+    UnSelectedMenuItem?: () => ({...styles}),
+    ChipComponent?: () => ({...styles}),
+    HelperText?: () => ({...styles})
  }}
 />
 ```
 -  `Container` - overrides the multi selection ui container style
--  `SelectionListZeroState` - overrides the selection list zero state container
--  `SelectedListZeroState` - overrides the selected list zero state container
 -  `SearchComponent` - overrides the search component styles
--  `ProductComponent` - overrides the selection component (left list)
--  `SelectedComponent` - overrides the selected component(right list)
--  `SelectedCloseIcon` - overrides the selected component close icon
+-  `SelectedMenuItem` - overrides the selected menu item styles
+-  `UnSelectedMenuItem` - overrides the non selected item styles
+-  `ChipComponent` - overrides the chip style
+-  `HelperText` - overrides the helper text style
+-  `InputBox` - override the style of the box containing the chips and search bar
+-  `CheckedIcon` - overrides the checked icon style
+-  `UnCheckedIcon` - overrides the unchecked box style
+-  `ChipCloseIcon`- overrides the close icon style inside the chip
+-  `SearchIcon` - overrides the search icon style
+-  `ArrowIcon` - overrides the arrow icon style (right)
+-  `HiddenChipsIndicator` - overrides the style of the bubble showing the number of hidden chips if thresholdForBubble prop has a value
+
+## Icon Customizations
+
+
+All the default icons provided by this package are overridable using the `icons` prop.
+the below code shows all the overridable icons:
+
+```jsx
+<MultiSelection
+ options={optionsArray}
+ icons={{
+    Search?: url,
+    ChipClose?: url,
+    Checked?: url,
+    Arrow?: url
+ }}
+/>
+```
+-  `Search` - override the search icon
+-  `ChipClose` - overrides the chip close icon 
+-  `Checked` - override the checkbox checked icon
+-  `Arrow` - override the down arrow(right)

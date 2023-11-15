@@ -5,124 +5,127 @@
   gap: 12px;
   padding: 0px 12px;
   align-items: center;
-  border: 1px solid #E3E3E3;
-  margin: 18px 16px;
   position: relative;
-  input {
-    width: 100%;
-    border: none;
-    outline: none;
-    color: #1C1C1C;
-    font-size: 16px;
-    font-family: 'Poppins';
-  }
-  .closeIcon {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    width: 16px;
-    height: 16px;
-  }
-  .imageDiv {
-    width: 20px;
-    height: 20px;
-  }
 }
-.listWrapper {
-  box-shadow: 1px 2px 12px 0px #57575729;
-  border-radius: 8px;
+.searchInput {
   width: 100%;
-  height: inherit;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size:inherit;
+  font-family: 'Poppins';
+  background-color: inherit;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .container {
-  display: flex;
   width: 100%;
-  gap: 30px;
-  min-height: 370px;
-  .selectionListContainer {
-    height: 100%;
-    .zeroStateImage {
-      height: 65px;
-      width: 65px;
-      margin-bottom: 30px;
-    }
-    .listContainer {
-      height: calc(100% - 76px);
-      overflow-y: auto;
-      .eachItem {
-        color: #1C1C1C;
-        font-size: 16px;
-        padding: 12px 16px;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        cursor: pointer;
-        &.activeItem {
-          background: #F8F8FF;
-          border-bottom: 1px solid #E3E3E3 !important
-        }
-        &:hover {
-          opacity: 0.7;
-        }
-        input {
-          border: 1.6px solid #BCBCBD;
-          width: 20px;
-          height: 20px;
-          border-radius: 4px;
-          outline: none;
-          &:checked {
-            content: url('../../assets/State=Selected.svg');
-            border-radius: 8px;
-          }
-        }
-      }
-      .eachItem:not(:last-child) {
-        border-bottom: 1px solid #F6F6F9
-      }
-    }
+}
+.emptyList {
+  padding: 12px 16px;
+}
+.box {
+  display: flex;
+  overflow-y: auto;
+  align-items: center;
+  border: 2px solid #619fff;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding: 5px 10px;
+  width: auto;
+}
+.chip {
+  border: 1px solid #E3E3E3;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  align-items: center;
+  font-size: 16px;
+  min-height: 30px;
+}
+.chipClose {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 14px;
+  height: 14px;
+  background-position: center;
+  margin-left: 5px;
+}
+.listContainer {
+  position: absolute;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: inherit;
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+}
+.eachItem {
+  color: #1C1C1C;
+  font-size: 16px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  &.activeItem {
+    background: #F8F8FF;
+    border-bottom: 1px solid #E3E3E3 !important
+  }
+  &:hover {
+    opacity: 0.7;
   }
 }
-.zeroState {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.checkbox {
+  width: 20px;
+  height: 20px;
 }
-.selectedListContainer {
-  margin: 21px 20px;
+.unchecked {
+   width: 16px;
+   height: 16px;
+   border: 1px solid #BCBCBD;
+}
+.eachItem:not(:last-child) {
+  border-bottom: 1px solid #F6F6F9
+}
+.buttonIcon {
+  border: none;
+  background-color: transparent;
+  &:hover {
+   cursor: pointer;
+  }
+}
+.loader {
+  padding: 12px 16px;
+  color: #808080;
+}
+.rotation {
+  transition: transform .3s;
+}
+.headSection {
+  width: inherit;
   display: flex;
   flex-wrap: wrap;
-  gap: 21px;
-  width: 96%;
-  max-height: calc(100% - 42px);
-  overflow-y: auto;
-  align-content: flex-start;
-  height: 100%;
-  .zeroStateImage {
-    width: 112px;
-    height: 112px;
-  }
-  .eachSelectedItem {
-    width: 44.5%;
-    border: 1px solid #E3E3E3;
-    padding: 14px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    cursor: pointer;
-    height: 26px;
-    align-items: center;
-    font-size: 16px;
-    &:hover {
-      opacity: 0.7;
-    }
-    .closeIcon {
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 20px;
-      height: 20px;
-    }
-  }
+  gap: 10px;
+}
+.error {
+  color: #FF0000;
+  font-size: 16px;
+}
+.errorBorder {
+  border-color: #FF0000;
+}
+.helperText {
+  font-size: 16px;
+  color: #808080;
+}
+.hiddenChipsCount {
+  font-weight: bold;
+  font-size: 18px;
 }

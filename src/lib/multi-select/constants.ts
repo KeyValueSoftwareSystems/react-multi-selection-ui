@@ -1,29 +1,22 @@
-import { Map } from './types';
-export const DEFAULT_SEARCH_PLACEHOLDER = 'Search products';
 
-export const SELECTION_LIST = 'selectionList';
+export const DEFAULT_PLACEHOLDER = 'Choose an option';
 
-export const SELECTED_LIST = 'selectedList';
+export const DEFAULT_LOADER_TEXT = 'Loading...';
 
-export const PRODUCT_UNSELECTED_STATUS = 'unselected';
-
-export const PRODUCT_SELECTED_STATUS = 'selected';
-
-export const PRODUCT_STATUS_CONVERSION: Map = {
-  selected: PRODUCT_UNSELECTED_STATUS,
-  unselected: PRODUCT_SELECTED_STATUS
-}
-
-export const DEFAULT_SELECTED_LIST_ZERO_STATE = 'You have not added any products!';
-
-export const DEFAULT_SELECTION_LIST_ZERO_STATE = 'No products to show';
+export const DEFAULT_EMPTY_LIST_MESSAGE = 'No other options';
 
 export enum Elements {
-  SelectionListZeroState = 'SelectionListZeroState',
-  SelectedListZeroState = 'SelectedListZeroState',
+  Container = 'Container',
   SearchComponent = 'SearchComponent',
-  ProductComponent = 'ProductComponent',
-  SelectedComponent = 'SelectedComponent',
-  SelectedCloseIcon = 'SelectedCloseIcon',
-  Container = 'Container'
+  SelectedMenuItem = 'SelectedMenuItem',
+  UnSelectedMenuItem = 'UnSelectedMenuItem',
+  ChipComponent = 'ChipComponent',
+  HelperText = 'HelperText',
+  InputBox= 'InputBox',
+  CheckedIcon = 'CheckedIcon',
+  UnCheckedIcon = 'UnCheckedIcon',
+  ChipCloseIcon = 'ChipCloseIcon',
+  SearchIcon = 'SearchIcon',
+  ArrowIcon = 'ArrowIcon',
+  HiddenChipsIndicator = 'HiddenChipsIndicator'
 }
