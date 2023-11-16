@@ -12,8 +12,8 @@
   border: none;
   outline: none;
   color: inherit;
-  font-size:inherit;
-  font-family: 'Poppins';
+  font-size: inherit;
+  font-family: "Poppins";
   background-color: inherit;
 }
 .icon {
@@ -40,7 +40,7 @@
   width: auto;
 }
 .chip {
-  border: 1px solid #E3E3E3;
+  border: 1px solid #e3e3e3;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -60,14 +60,14 @@
 .listContainer {
   position: absolute;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   width: inherit;
   overflow-y: scroll;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .eachItem {
-  color: #1C1C1C;
+  color: #1c1c1c;
   font-size: 16px;
   padding: 12px 16px;
   display: flex;
@@ -80,8 +80,8 @@
   height: auto;
   font-family: auto;
   &.activeItem {
-    background: #F8F8FF;
-    border-bottom: 1px solid #E3E3E3 !important
+    background: #f8f8ff;
+    border-bottom: 1px solid #e3e3e3 !important;
   }
   &:hover {
     opacity: 0.7;
@@ -92,18 +92,18 @@
   height: 20px;
 }
 .unchecked {
-   width: 16px;
-   height: 16px;
-   border: 1px solid #BCBCBD;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #bcbcbd;
 }
 .eachItem:not(:last-child) {
-  border-bottom: 1px solid #F6F6F9
+  border-bottom: 1px solid #f6f6f9;
 }
 .buttonIcon {
   border: none;
   background-color: transparent;
   &:hover {
-   cursor: pointer;
+    cursor: pointer;
   }
 }
 .loader {
@@ -111,7 +111,7 @@
   color: #808080;
 }
 .rotation {
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 .headSection {
   width: inherit;
@@ -120,11 +120,11 @@
   gap: 10px;
 }
 .error {
-  color: #FF0000;
+  color: #ff0000;
   font-size: 16px;
 }
 .errorBorder {
-  border-color: #FF0000;
+  border-color: #ff0000;
 }
 .helperText {
   font-size: 16px;

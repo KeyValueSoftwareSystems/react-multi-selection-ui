@@ -1,5 +1,5 @@
-import { Elements } from '../constants';
-import { StyleProp } from '../types';
+import { Elements } from "../constants";
+import { StyleProp } from "../types";
 
 export const getStyles = (element: Elements, styles: StyleProp): object => {
   const getElementStyle = styles[element];
