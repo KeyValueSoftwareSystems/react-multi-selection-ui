@@ -2,6 +2,7 @@ import React from "react";
 import { getStyles } from "./utils/utils";
 import { ModalProps, OptionType } from "./types";
 import {
+  ElementsWithCallableStyle,
   Elements,
   DEFAULT_LOADER_TEXT,
   DEFAULT_EMPTY_LIST_MESSAGE,
@@ -21,10 +22,9 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
     onOptionClick,
     styles = {},
   } = props;
-
   return (
     <>
-      {list.length && (list.length !== selectedIds.length || !hideSelected)
+      {list?.length && (list.length !== selectedIds.length || !hideSelected)
         ? list?.map(
             (item: OptionType): JSX.Element =>
               (((hideSelected && !selectedIds.includes(item.id)) ||
@@ -35,9 +35,10 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
                   onClick={(): void => onOptionClick(item.id)}
                   style={getStyles(
                     !selectedIds.includes(item.id)
-                      ? Elements.UnSelectedMenuItem
-                      : Elements.SelectedMenuItem,
-                    styles
+                      ? ElementsWithCallableStyle.UnSelectedMenuItem
+                      : ElementsWithCallableStyle.SelectedMenuItem,
+                    styles,
+                    item.id
                   )}
                   id={`option-card-${item.id}`}
                   data-testid="option-card"
@@ -48,14 +49,14 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
                         className={`${classes.checkbox} ${classes.icon}`}
                         style={{
                           backgroundImage: `url(${icon})`,
-                          ...getStyles(Elements.CheckedIcon, styles),
+                          ...styles[Elements.CheckedIcon],
                         }}
                         id="checked-checkbox"
                       />
                     ) : (
                       <div
                         className={`${classes.unchecked} ${classes.icon}`}
-                        style={getStyles(Elements.UnCheckedIcon, styles)}
+                        style={styles[Elements.UnCheckedIcon]}
                         id="unchecked-checkbox"
                       />
                     ))}

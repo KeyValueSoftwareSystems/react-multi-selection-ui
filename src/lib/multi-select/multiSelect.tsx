@@ -4,7 +4,6 @@ import CheckMark from "../../assets/CheckBox.svg";
 import SearchComponent from "./searchComponent";
 import { MultiSelectPropType, OptionType } from "./types";
 import { DEFAULT_PLACEHOLDER, Elements } from "./constants";
-import { getStyles } from "./utils/utils";
 import classes from "./styles.module.scss";
 import Chips from "./chips";
 import MenuListing from "./menuItems";
@@ -24,10 +23,12 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     renderEmptyItem = undefined,
     hasError = false,
     helperText = "",
+    // Show the bubble when the count of selected items reaches this threshold
     thresholdForBubble = undefined,
     icons = {},
     onSearch = undefined,
     onItemClick = undefined,
+    setSelectedValues = undefined,
   } = props;
 
   const { Checked = CheckMark, Search, ChipClose, Arrow } = icons;
@@ -80,20 +81,23 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     } else {
       updatedList.push(id);
     }
-    setSelectedIds(updatedList);
     inputRef.current?.focus();
+    setSelectedIds(updatedList);
+    if (setSelectedValues) {
+      setSelectedValues(updatedList);
+    }
     if (onItemClick) {
-      onItemClick(updatedList);
+      onItemClick(id);
     }
   };
 
-  const onChipClick = (id: string | number): void => {
+  const onChipCloseClick = (id: string | number): void => {
     const itemIndex = selectedIds.findIndex((item) => item === id);
     const updatedList = [...selectedIds];
     updatedList.splice(itemIndex, 1);
     setSelectedIds(updatedList);
-    if (onItemClick) {
-      onItemClick(updatedList);
+    if (setSelectedValues) {
+      setSelectedValues(updatedList);
     }
   };
 
@@ -132,21 +136,18 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   );
 
   return (
-    <div
-      className={classes.container}
-      style={getStyles(Elements.Container, styles)}
-    >
+    <div className={classes.container} style={styles[Elements.Container]}>
       <div
         className={`${classes.box} ${hasError && classes.errorBorder}`}
         ref={searchBarRef}
-        style={getStyles(Elements.InputBox, styles)}
+        style={styles[Elements.InputBox]}
       >
         <div className={classes.headSection}>
           {showChips && (
             <Chips
               styles={styles}
               list={chips}
-              onClick={onChipClick}
+              onClick={onChipCloseClick}
               icon={ChipClose}
               thresholdForBubble={thresholdForBubble}
               showAllChips={showAllChips}
@@ -164,9 +165,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
           )}
           {hideSearch && !selectedIds.length && (
             // same style for the search box is used
-            <div style={getStyles(Elements.SearchComponent, styles)}>
-              {placeholder}
-            </div>
+            <div style={styles[Elements.SearchComponent]}>{placeholder}</div>
           )}
         </div>
         <button
@@ -180,7 +179,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
             className={classes.rotation}
             style={{
               transform: `rotate(${isModalVisible ? "180deg" : "0deg"})`,
-              ...getStyles(Elements.ArrowIcon, styles),
+              ...styles[Elements.ArrowIcon],
             }}
           />
         </button>
@@ -189,7 +188,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         <div
           id="helper-text"
           className={hasError ? classes.error : classes.helperText}
-          style={getStyles(Elements.HelperText, styles)}
+          style={styles[Elements.HelperText]}
         >
           {helperText}
         </div>
@@ -211,6 +210,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
             renderEmptyItem={renderEmptyItem}
             renderLoader={renderLoader}
             onOptionClick={onOptionClick}
+            styles={styles}
           />
         </div>
       )}

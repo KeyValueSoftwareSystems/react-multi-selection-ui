@@ -1,7 +1,6 @@
 import React, { ForwardedRef, forwardRef, useEffect, useState } from "react";
 import searchIcon from "../../assets/Search.svg";
 import closeIcon from "../../assets/x-circle.svg";
-import { getStyles } from "./utils/utils";
 import { SearchComponentPropType } from "./types";
 import { Elements } from "./constants";
 import classes from "./styles.module.scss";
@@ -20,13 +19,13 @@ const SearchComponent = (
   return (
     <div
       className={classes.searchContainer}
-      style={getStyles(Elements.SearchComponent, styles)}
+      style={styles[Elements.SearchComponent]}
     >
       <img
-        src={icon || searchIcon}
+        src={icon ?? searchIcon}
         alt=""
         className={classes.chipClose}
-        style={getStyles(Elements.SearchIcon, styles)}
+        style={styles[Elements.SearchIcon]}
       />
       <input
         type="text"

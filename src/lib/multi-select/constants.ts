@@ -7,9 +7,6 @@ export const DEFAULT_EMPTY_LIST_MESSAGE = "No other options";
 export enum Elements {
   Container = "Container",
   SearchComponent = "SearchComponent",
-  SelectedMenuItem = "SelectedMenuItem",
-  UnSelectedMenuItem = "UnSelectedMenuItem",
-  ChipComponent = "ChipComponent",
   HelperText = "HelperText",
   InputBox = "InputBox",
   CheckedIcon = "CheckedIcon",
@@ -18,4 +15,10 @@ export enum Elements {
   SearchIcon = "SearchIcon",
   ArrowIcon = "ArrowIcon",
   HiddenChipsIndicator = "HiddenChipsIndicator",
+}
+
+export enum ElementsWithCallableStyle {
+  SelectedMenuItem = "SelectedMenuItem",
+  UnSelectedMenuItem = "UnSelectedMenuItem",
+  ChipComponent = "ChipComponent",
 }

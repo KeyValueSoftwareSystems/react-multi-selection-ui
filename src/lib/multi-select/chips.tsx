@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import closeIcon from "../../assets/x.svg";
 import { ChipListPropType, OptionType } from "./types";
-import { Elements } from "./constants";
+import { Elements, ElementsWithCallableStyle } from "./constants";
 import { getStyles } from "./utils/utils";
 import classes from "./styles.module.scss";
 
@@ -26,7 +26,7 @@ const Chips = (props: ChipListPropType): JSX.Element => {
   }, [list, thresholdForBubble, showAllChips]);
 
   const hiddenChipsCount =
-    thresholdForBubble ?? 0 > 0 ? list?.length - thresholdForBubble : 0;
+    thresholdForBubble > 0 ? list?.length - thresholdForBubble : 0;
 
   return (
     <>
@@ -35,7 +35,11 @@ const Chips = (props: ChipListPropType): JSX.Element => {
           <div
             key={item.id}
             className={classes.chip}
-            style={getStyles(Elements.ChipComponent, styles)}
+            style={getStyles(
+              ElementsWithCallableStyle.ChipComponent,
+              styles,
+              item.id
+            )}
             id="chip"
           >
             <div id={`selected-chip-${item.id}`}>{item.name}</div>
@@ -48,7 +52,7 @@ const Chips = (props: ChipListPropType): JSX.Element => {
                 src={icon ?? closeIcon}
                 alt=""
                 className={classes.chipClose}
-                style={getStyles(Elements.ChipCloseIcon, styles)}
+                style={styles[Elements.ChipCloseIcon]}
               />
             </button>
           </div>
@@ -60,7 +64,7 @@ const Chips = (props: ChipListPropType): JSX.Element => {
           <button
             id="hidden-chip-count"
             className={`${classes.buttonIcon} ${classes.hiddenChipsCount}`}
-            style={getStyles(Elements.HiddenChipsIndicator, styles)}
+            style={styles[Elements.HiddenChipsIndicator]}
           >
             +{hiddenChipsCount}
           </button>

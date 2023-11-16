@@ -1,34 +1,18 @@
-  
-
 # React Multi Selection UI
 
-  
-
-<a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"><img  src="https://badgen.net/npm/v/@keyvaluesystems/react-multi-selection-ui-component?color=blue"  alt="npm version"></a>  <a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"  ><img  src="https://img.shields.io/npm/dw/@keyvaluesystems/react-multi-selection-ui-component?label=Downloads"  /></a>  <a  href="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui"><img  src="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui/actions/workflows/deploy.yml/badge.svg"  alt=""  /></a>
-
-  
+<a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"><img  src="https://badgen.net/npm/v/@keyvaluesystems/react-multi-selection-ui-component?color=blue"  alt="npm version"></a> <a  href="https://www.npmjs.com/package/@keyvaluesystems/react-multi-selection-ui-component"  ><img  src="https://img.shields.io/npm/dw/@keyvaluesystems/react-multi-selection-ui-component?label=Downloads"  /></a> <a  href="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui"><img  src="https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui/actions/workflows/deploy.yml/badge.svg"  alt=""  /></a>
 
 <div  align="center">
 <img  src="./screenshot.png"  alt=""  width="400"  height="230"/>
 </div>
 
-  
-
->A customizable ready to use Multi Selection UI component with Search feature
-
-  
+> A pre-built, customizable Multi-Selection UI component with an integrated search feature
 
 Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/multi-selection-ui-gzcfrn">here</a>
 
-  
-
 ## Installation
 
-  
-
 The easiest way to use react-multi-selection-ui-component is to install it from npm and build it into your app with Webpack.
-
-  
 
 ```bash
 
@@ -36,74 +20,83 @@ npm install  @keyvaluesystems/react-multi-selection-ui-component
 
 ```
 
-You’ll need to install React separately since it isn't included in the package.  
+You’ll need to install React separately since it isn't included in the package.
 
 ## Usage
 
 React Multi Selection UI can run in a very basic mode by just providing the `options` like given below:
 
-  
-
 ```jsx
+import MultiSelection from "@keyvaluesystems/react-multi-selection-ui-component";
 
-import  MultiSelection  from  '@keyvaluesystems/react-multi-selection-ui-component';
-
-<MultiSelection
-  options={optionsArray}
-/>
-
+<MultiSelection options={optionsArray} />;
 ```
 
-  
+The optionsArray consists of objects with the following keys:
 
-The optionsArray is an array of objects with the following keys:
-
-  
-
--  `id` - a unique identifier for each option
-
--  `name` - a string that represents each option label
-
--  `checked` - an optional boolean value to indicate the default state
+- `id`: A unique identifier for each option.
+- `name`: A string representing the label for each option.
+- `checked`: An optional boolean value indicating the default state of the option
 
 An example for options array is shown below:
 
-  
-
 ```jsx
-const  optionsArray = [
+const optionsArray = [
   {
-    id:  1,
-    name:  'Option 1',
-    checked: true
+    id: 1,
+    name: "Option 1",
+    checked: true,
   },
   {
-    id:  2,
-    name:  'Option 2',
-  }
-]
+    id: 2,
+    name: "Option 2",
+  },
+];
 ```
+
 ## v1.0.0 (Major Version Change)
 
 This release includes breaking changes, new features, and updates. Please read this document carefully before upgrading
 
 ### Breaking Changes
 
-- `productList` prop is renamed to `options` with an additional checked item in the object
-- `zeroState` prop is deprecated
--  Major changes in the UI behavior
+- The `productList` prop has been renamed to `options`, and now each object within the options array includes an additional optional `checked` property.
+- The `zeroState` prop is deprecated.
+- Significant alterations have been made to the UI behavior.
+  Please take note of these changes during the upgrade
 
 ### Migration Steps
 
-- `options` props can be used to pass the list
-- `searchPlaceholder` is replaced with `placeholder`
-- `renderEmptyItem` can be used to pass the empty state component
-- `setSelectedValues` is replaced with `onItemClick`
+- Update Options Prop: The `productList` prop has been renamed to `options`. Use the `options` prop to pass the list of items.
+- Replace `searchPlaceholder` with placeholder:The `searchPlaceholder` prop has been replaced with `placeholder`.
+- Utilize `renderEmptyItem` Prop: To pass the empty state component, use the renderEmptyItem prop.
 
+<b>Before</b>
+
+```jsx
+<MultiSelection
+  productList={yourProductList}
+  searchPlaceholder="Type to search..."
+  zeroState={{
+    selectionList: <YourCustomEmptyState />,
+    selectedList: <YourCustomEmptyState />,
+  }}
+/>
+```
+
+<b>After</b>
+
+```jsx
+<MultiSelection
+  options={yourProductList}
+  placeholder="Type to search..."
+  renderEmptyItem={<YourCustomEmptyState />}
+/>
+```
 
 ## Props
 
-  Props that can be passed to the component are listed below:
+Props that can be passed to the component are listed below:
 
 <table>
 <thead>
@@ -159,7 +152,13 @@ The callback function which will be triggered on text change in the search box
 <tr>
 <td><code><b>onItemClick?:</b> function</code></td>
 <td>
-The callback function which will be triggered on clicking the check box and chip's close button. Can be used for obtaining the selected values
+The callback function which will be triggered on clicking the menu item row. Can be used for obtaining the clicked row id
+</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code><b>setSelectedValues?:</b> function</code></td>
+The callback function which will be triggered on clicking the check box and chip's close button. Can be used for obtaining the selected id's
 </td>
 <td><code>undefined</code></td>
 </tr>
@@ -222,7 +221,7 @@ To display an additional message.
 <tr>
 <td><code><b>thresholdForBubble?:</b> number</code></td>
 <td>
-To limit the number of chips shown.
+Show the bubble when the count of selected items reaches this threshold.
 </td>
 <td><code>length of options array</code></td>
 </tr>
@@ -238,7 +237,6 @@ Provides you with an object to replace the default icons used.
 
 ## Style Customizations
 
-
 All the default styles provided by this package are overridable using the `style` prop.
 the below code shows all the overridable styles:
 
@@ -246,41 +244,46 @@ the below code shows all the overridable styles:
 <MultiSelection
  options={optionsArray}
  styles={{
-    Container?: () => ({...styles}),
-    SearchComponent?: () => ({...styles}),
-    SelectedMenuItem?: () => ({...styles}),
-    UnSelectedMenuItem?: () => ({...styles}),
-    ChipComponent?: () => ({...styles}),
-    HelperText?: () => ({...styles}),
-    InputBox?: () => ({...styles}),
-    CheckedIcon?: () => ({...styles}),
-    UnCheckedIcon?: () => ({...styles}),
-    ChipCloseIcon?: () => ({...styles}),
-    SearchIcon?: () => ({...styles}),
-    ArrowIcon?: () => ({...styles}),
-    HiddenChipsIndicator?: () => ({...styles})
+    Container?: {...styles},
+    SearchComponent?: {...styles},
+    HelperText?: {...styles},
+    InputBox?: {...styles},
+    CheckedIcon?: {...styles},
+    UnCheckedIcon?: {...styles},
+    ChipCloseIcon?: {...styles},
+    SearchIcon?: {...styles},
+    ArrowIcon?: {...styles},
+    HiddenChipsIndicator?: {...styles},
+    SelectedMenuItem?: (id) => ({...styles}),
+    UnSelectedMenuItem?: (id) => ({...styles}),
+    ChipComponent?: (id) => ({...styles}),
  }}
 />
 ```
--  `Container` - overrides the multi selection ui container style
--  `SearchComponent` - overrides the search component styles
--  `SelectedMenuItem` - overrides the selected menu item styles
--  `UnSelectedMenuItem` - overrides the non selected item styles
--  `ChipComponent` - overrides the chip style
--  `HelperText` - overrides the helper text style
--  `InputBox` - override the style of the box containing the chips and search bar
--  `CheckedIcon` - overrides the checked icon style
--  `UnCheckedIcon` - overrides the unchecked box style
--  `ChipCloseIcon`- overrides the close icon style inside the chip
--  `SearchIcon` - overrides the search icon style
--  `ArrowIcon` - overrides the arrow icon style (right)
--  `HiddenChipsIndicator` - overrides the style of the bubble showing the number of hidden chips if thresholdForBubble prop has a value
+
+To customize the style of various components, you can use the following prop names, each of which accepts a style object:
+
+- `ArrowIcon`: Overrides the style of the right-arrow icon.
+- `Container`: Overrides the style of the multi-selection UI container.
+- `CheckedIcon`: Overrides the style of the checked icon.
+- `ChipCloseIcon`: Overrides the style of the close icon within the chip.
+- `HelperText`: Overrides the style of the helper text.
+- `HiddenChipsIndicator`: Overrides the style of the bubble indicating the number of hidden chips if the thresholdForBubble prop has a value.
+- `InputBox`: Overrides the style of the box containing the chips and search bar.
+- `SearchIcon`: Overrides the style of the search icon.
+- `SearchComponent`: Overrides the styles of the search component.
+- `UnCheckedIcon`: Overrides the style of the unchecked box.
+
+You can utilize the provided prop names to customize the style of individual items in the chip or each item in the menu. This can be achieved by passing a function that returns the desired style for each element.
+
+- `ChipComponent` - overrides the chip style
+- `SelectedMenuItem` - overrides the selected menu item styles
+- `UnSelectedMenuItem` - overrides the non selected item styles
 
 ## Icon Customizations
 
-
-All the default icons provided by this package are overridable using the `icons` prop.
-the below code shows all the overridable icons:
+The `icons` prop allows for the customization of default icons provided by this package
+The following code displays the icons that can be customized
 
 ```jsx
 <MultiSelection
@@ -293,7 +296,8 @@ the below code shows all the overridable icons:
  }}
 />
 ```
--  `Search` - override the search icon
--  `ChipClose` - overrides the chip close icon 
--  `Checked` - override the checkbox checked icon
--  `Arrow` - override the down arrow(right)
+
+- `Arrow` - override the down arrow(right)
+- `ChipClose` - overrides the chip close icon
+- `Checked` - override the checkbox checked icon
+- `Search` - override the search icon

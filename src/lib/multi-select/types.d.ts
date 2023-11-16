@@ -15,7 +15,8 @@ export interface MultiSelectPropType {
   thresholdForBubble?: number;
   icons?: IconsProps;
   onSearch?: (value: string) => void;
-  onItemClick?: (ids: Array<string | number>) => void;
+  onItemClick?: (id: string | number) => void;
+  setSelectedValues?: (ids: Array<string | number>) => void;
 }
 
 export type OptionType = {
@@ -43,19 +44,19 @@ export interface ChipListPropType {
 }
 
 export type StyleProp = {
-  Container?: () => object;
-  SearchComponent?: () => object;
-  SelectedMenuItem?: () => object;
-  UnSelectedMenuItem?: () => object;
-  ChipComponent?: () => object;
-  InputBox?: () => object;
-  HelperText?: () => object;
-  CheckedIcon?: () => object;
-  UnCheckedIcon?: () => object;
-  ChipCloseIcon?: () => object;
-  SearchIcon?: () => object;
-  ArrowIcon?: () => object;
-  HiddenChipsIndicator?: () => object;
+  SelectedMenuItem?: (id: string | number) => object;
+  UnSelectedMenuItem?: (id: string | number) => object;
+  ChipComponent?: (id: string | number) => object;
+  Container?: object;
+  SearchComponent?: object;
+  InputBox?: object;
+  HelperText?: object;
+  CheckedIcon?: object;
+  UnCheckedIcon?: object;
+  ChipCloseIcon?: object;
+  SearchIcon?: object;
+  ArrowIcon?: object;
+  HiddenChipsIndicator?: object;
 };
 
 export type IconsProps = {
