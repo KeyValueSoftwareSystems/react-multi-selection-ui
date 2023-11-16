@@ -126,15 +126,9 @@ LimitingNumberOfVisibleChips.args = {
   styles: {
     Container: { width: "40%", padding: 20 },
     SearchComponent: { fontSize: 16 },
-    SelectedMenuItem: (id: number) => {
-      return id === 1
-        ? {
-            fontSize: 22,
-            color: "red",
-            backgroundColor: "#D9E2F0",
-          }
-        : {};
-    },
+    SelectedMenuItem: () => ({
+      backgroundColor: "#D9E2F0",
+    }),
     UnSelectedMenuItem: () => ({
       fontSize: 18,
       color: "#000000",

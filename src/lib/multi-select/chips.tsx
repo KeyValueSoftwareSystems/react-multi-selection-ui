@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, MouseEvent } from "react";
 import closeIcon from "../../assets/x.svg";
 import { ChipListPropType, OptionType } from "./types";
 import { Elements, ElementsWithCallableStyle } from "./constants";
@@ -45,8 +45,10 @@ const Chips = (props: ChipListPropType): JSX.Element => {
             <div id={`selected-chip-${item.id}`}>{item.name}</div>
             <button
               id={`chip-close-${item.id}`}
-              className={classes.buttonIcon}
-              onClick={(): void => onClick(item.id)}
+              className={`${classes.buttonIcon} ${classes.elevatedContent}`}
+              onClick={(e: MouseEvent<HTMLButtonElement>): void =>
+                onClick(e, item.id)
+              }
             >
               <img
                 src={icon ?? closeIcon}

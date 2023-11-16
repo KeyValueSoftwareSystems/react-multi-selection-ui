@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, MouseEvent } from "react";
 import DownArrow from "../../assets/DropdownArrow.svg";
 import CheckMark from "../../assets/CheckBox.svg";
 import SearchComponent from "./searchComponent";
@@ -56,9 +56,9 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
 
   useEffect(() => {
     if (typeof document !== undefined) {
-      document.addEventListener("mousedown", onMouseDown);
+      document.addEventListener("mouseup", onMouseUp);
     }
-    return () => document.removeEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mouseup", onMouseUp);
   }, [document]);
 
   const handleSearch = (value: string): void => {
@@ -91,7 +91,11 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     }
   };
 
-  const onChipCloseClick = (id: string | number): void => {
+  const onChipCloseClick = (
+    event: MouseEvent<HTMLButtonElement>,
+    id: string | number
+  ): void => {
+    event.stopPropagation();
     const itemIndex = selectedIds.findIndex((item) => item === id);
     const updatedList = [...selectedIds];
     updatedList.splice(itemIndex, 1);
@@ -105,7 +109,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     setIsModalVisible(true);
   };
 
-  const onMouseDown = (event: Event): void => {
+  const onMouseUp = (event: Event): void => {
     if (
       event.target instanceof Node &&
       !modalRef?.current?.contains(event.target) &&
@@ -116,17 +120,10 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
       setShowAllChips(false);
       return;
     }
-    if (
-      event.target instanceof Node &&
-      searchBarRef?.current?.contains(event.target) &&
-      thresholdForBubble
-    ) {
-      // to expand the collapsed chips if thresholdForBubble has a value
-      setShowAllChips(true);
-    }
   };
 
-  const onArrowClick = (): void => {
+  const onArrowClick = (event: MouseEvent<HTMLButtonElement>): void => {
+    event.stopPropagation();
     setIsModalVisible(!isModalVisible);
   };
 
@@ -141,6 +138,9 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         className={`${classes.box} ${hasError && classes.errorBorder}`}
         ref={searchBarRef}
         style={styles[Elements.InputBox]}
+        onClick={() => {
+          setShowAllChips(true);
+        }}
       >
         <div className={classes.headSection}>
           {showChips && (
@@ -170,8 +170,8 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         </div>
         <button
           type="button"
-          className={classes.buttonIcon}
-          onClick={onArrowClick}
+          className={`${classes.buttonIcon} ${classes.elevatedContent}`}
+          onClick={(e: MouseEvent<HTMLButtonElement>) => onArrowClick(e)}
           id="down-arrow"
         >
           <img

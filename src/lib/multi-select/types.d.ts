@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 export interface MultiSelectPropType {
   options: OptionType[];
   showCheckbox?: boolean;
@@ -38,7 +39,7 @@ export interface ChipListPropType {
   list: OptionType[];
   styles?: StyleProp;
   icon?: string;
-  onClick: (id: string | number) => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>, id: string | number) => void;
   thresholdForBubble?: number;
   showAllChips: boolean;
 }

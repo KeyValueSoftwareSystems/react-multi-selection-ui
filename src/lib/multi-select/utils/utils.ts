@@ -8,7 +8,6 @@ export const getStyles = (
 ): object => {
   // id will be available for styles given to user as functions
   const getElementStyle = styles[element];
-  console.log("styles", styles, element);
   if (getElementStyle) {
     return getElementStyle(id);
   }
