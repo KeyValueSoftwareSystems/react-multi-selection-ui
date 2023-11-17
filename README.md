@@ -8,7 +8,7 @@
 
 > A pre-built, customizable Multi-Selection UI component with an integrated search feature
 
-Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/multi-selection-ui-gzcfrn">here</a>
+Try tweaking a multi selection ui component using this codesandbox link <a  href="https://codesandbox.io/s/react-multi-select-cy5x78?file=/src/App.js">here</a>
 
 ## Installation
 
@@ -177,7 +177,7 @@ The boolean value to control the display of selected options as chips.
 <td><code>true</code></td>
 </tr>
 <tr>
-<td><code><b>maxHeight?:</b> string | number</code></td>
+<td><code><b>dropdownMaxHeight?:</b> string | number</code></td>
 <td>
 The prop to control the height of the dropdown modal.
 </td>

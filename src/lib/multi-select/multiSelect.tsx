@@ -18,7 +18,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     hideSearch = false,
     showChips = true,
     isLoading = false,
-    maxHeight = "100%",
+    dropdownMaxHeight = "100%",
     renderLoader = undefined,
     renderEmptyItem = undefined,
     hasError = false,
@@ -44,7 +44,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   //ref for the modal
   const modalRef = useRef<HTMLDivElement>(null);
   // ref for the container having chips,search bar and arrow
-  const searchBarRef = useRef<HTMLDivElement>(null);
+  const interactableAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setList(options);
@@ -113,7 +113,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     if (
       event.target instanceof Node &&
       !modalRef?.current?.contains(event.target) &&
-      !searchBarRef?.current?.contains(event.target)
+      !interactableAreaRef?.current?.contains(event.target)
     ) {
       // to close the dropdown modal on clicking outside the modal and the search bar
       setIsModalVisible(false);
@@ -136,7 +136,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     <div className={classes.container} style={styles[Elements.Container]}>
       <div
         className={`${classes.box} ${hasError && classes.errorBorder}`}
-        ref={searchBarRef}
+        ref={interactableAreaRef}
         style={styles[Elements.InputBox]}
         onClick={() => {
           setShowAllChips(true);
@@ -197,7 +197,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         <div
           className={classes.listContainer}
           ref={modalRef}
-          style={{ maxHeight }}
+          style={{ maxHeight: dropdownMaxHeight }}
           id="menu-list"
         >
           <MenuListing

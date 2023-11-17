@@ -7,7 +7,7 @@ export interface MultiSelectPropType {
   hideSearch?: boolean;
   styles?: StyleProp;
   showChips?: boolean;
-  maxHeight?: string | number;
+  dropdownMaxHeight?: string | number;
   renderEmptyItem?: JSX.Element;
   isLoading?: boolean;
   renderLoader?: JSX.Element;

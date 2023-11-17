@@ -209,16 +209,9 @@ WithError.args = {
   styles: {
     HelperText: { textAlign: "left", paddingTop: 10 },
     Container: { width: "40%", paddingTop: 20 },
-    SelectedMenuItem: (id: number) => {
-      return id === 1
-        ? {
-            fontSize: 18,
-            color: "red",
-            backgroundColor: "#D9E2F0",
-          }
-        : {};
-    },
   },
+  hasError: true,
+  helperText: "This is a dummy error",
 };
 
 export const AdjustingEachMenuItemStyle = Template.bind({});
