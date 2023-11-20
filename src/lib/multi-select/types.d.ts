@@ -1,58 +1,81 @@
+import { MouseEvent } from "react";
 export interface MultiSelectPropType {
-  productList: eachProductType[],
-  showCheckbox?: boolean,
-  hideSelected?: boolean,
-  hideSearch?: boolean,
-  onSearch?(value: string): void,
-  setSelectedValues?: (values: eachProductType[]) => {},
-  searchPlaceholder?: string,
-  zeroState?: {
-    selectionList: JSX.Element,
-    selectedList: JSX.Element
-  },
-  styles?: StyleProp
+  options: OptionType[];
+  showCheckbox?: boolean;
+  placeholder?: string;
+  hideSelected?: boolean;
+  hideSearch?: boolean;
+  styles?: StyleProp;
+  showChips?: boolean;
+  dropdownMaxHeight?: string | number;
+  renderEmptyItem?: JSX.Element;
+  isLoading?: boolean;
+  renderLoader?: JSX.Element;
+  hasError?: boolean;
+  helperText?: string;
+  thresholdForBubble?: number;
+  icons?: IconsProps;
+  onSearch?: (value: string) => void;
+  onItemClick?: (id: string | number) => void;
+  setSelectedValues?: (ids: Array<string | number>) => void;
 }
 
-export type eachProductType = {
-  name: string,
-  id: string | number,
-  status?: string
-}
+export type OptionType = {
+  name: string;
+  id: string | number;
+  checked?: boolean;
+};
 
 export type SearchComponentPropType = {
-  onSearch: (value: string) => void,
-  searchPlaceholder: string,
-  styles?: StyleProp
-}
+  searchPlaceholder: string;
+  styles?: StyleProp;
+  showChips?: boolean;
+  icon?: string;
+  onFocus: () => void;
+  onSearch: (value: string) => void;
+};
 
-export interface ListWrapperPropType {
-  children: JSX.Element
-}
-
-export interface SelectionListPropType extends MultiSelectPropType {
-  list: eachProductType[],
-  setList: (val: eachProductType[]) => void,
-  zeroStateComponent: JSX.Element | undefined
-
-}
-
-export interface Map {
-  [key: string]: string | undefined
-}
-
-export interface SelectedListPropType {
-  list: eachProductType[],
-  setList: (val: eachProductType[]) => void,
-  zeroStateComponent: JSX.Element | undefined,
-  styles?: StyleProp
+export interface ChipListPropType {
+  list: OptionType[];
+  styles?: StyleProp;
+  icon?: string;
+  onClick: (event: MouseEvent<HTMLButtonElement>, id: string | number) => void;
+  thresholdForBubble?: number;
+  showAllChips: boolean;
 }
 
 export type StyleProp = {
-  SelectionListZeroState?: () => object,
-  SelectedListZeroState?: () => object,
-  SearchComponent?: () => object,
-  ProductComponent?: () => object,
-  SelectedComponent?: () => object,
-  SelectedCloseIcon?: () => object,
-  Container?: () => object
-}
+  SelectedMenuItem?: (id: string | number) => object;
+  UnSelectedMenuItem?: (id: string | number) => object;
+  ChipComponent?: (id: string | number) => object;
+  Container?: object;
+  SearchComponent?: object;
+  InputBox?: object;
+  HelperText?: object;
+  CheckedIcon?: object;
+  UnCheckedIcon?: object;
+  ChipCloseIcon?: object;
+  SearchIcon?: object;
+  ArrowIcon?: object;
+  HiddenChipsIndicator?: object;
+};
+
+export type IconsProps = {
+  Search?: string;
+  ChipClose?: string;
+  Checked?: string;
+  Arrow?: string;
+};
+
+export type ModalProps = {
+  list: OptionType[];
+  selectedIds: (string | number)[];
+  hideSelected: boolean;
+  showCheckbox: boolean;
+  icon: string;
+  isLoading: boolean;
+  renderEmptyItem?: JSX.Element;
+  renderLoader?: JSX.Element;
+  onOptionClick: (id: string | number) => void;
+  styles?: StyleProp;
+};
