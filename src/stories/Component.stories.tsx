@@ -276,3 +276,33 @@ AdjustingEachMenuItemStyle.args = {
     },
   },
 };
+
+export const WithLoadingBar = Template.bind({});
+WithLoadingBar.args = {
+  options: [
+    {
+      id: 1,
+      name: "Upload new pictures",
+      checked: true,
+    },
+    {
+      id: 2,
+      name: "Pay rent",
+      checked: false,
+    },
+    {
+      id: 3,
+      name: "Go Shopping",
+    },
+    {
+      id: 4,
+      name: "Call friends",
+    },
+    {
+      id: 5,
+      name: "Read books",
+    },
+  ],
+  onSearch: undefined,
+  isLoading: true,
+};
