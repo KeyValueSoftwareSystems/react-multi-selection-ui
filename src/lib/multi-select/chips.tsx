@@ -1,4 +1,4 @@
-import React, { useMemo, MouseEvent } from "react";
+import React, { MouseEvent, useMemo } from "react";
 import closeIcon from "../../assets/x.svg";
 import { ChipListPropType, OptionType } from "./types";
 import { Elements, ElementsWithCallableStyle } from "./constants";

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState, MouseEvent } from "react";
+import React, { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import DownArrow from "../../assets/DropdownArrow.svg";
 import CheckMark from "../../assets/CheckBox.svg";
 import SearchComponent from "./searchComponent";
@@ -57,8 +57,9 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   useEffect(() => {
     if (typeof document !== undefined) {
       document.addEventListener("mouseup", onMouseUp);
+
+      return () => document.removeEventListener("mouseup", onMouseUp);
     }
-    return () => document.removeEventListener("mouseup", onMouseUp);
   }, [document]);
 
   const handleSearch = (value: string): void => {
@@ -138,7 +139,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         className={`${classes.box} ${hasError && classes.errorBorder}`}
         ref={interactableAreaRef}
         style={styles[Elements.InputBox]}
-        onClick={() => {
+        onClick={(): void => {
           setShowAllChips(true);
         }}
       >
@@ -171,7 +172,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
         <button
           type="button"
           className={`${classes.buttonIcon} ${classes.elevatedContent}`}
-          onClick={(e: MouseEvent<HTMLButtonElement>) => onArrowClick(e)}
+          onClick={(e: MouseEvent<HTMLButtonElement>): void => onArrowClick(e)}
           id="down-arrow"
         >
           <img

@@ -2,10 +2,10 @@ import React from "react";
 import { getStyles } from "./utils/utils";
 import { ModalProps, OptionType } from "./types";
 import {
-  ElementsWithCallableStyle,
-  Elements,
-  DEFAULT_LOADER_TEXT,
   DEFAULT_EMPTY_LIST_MESSAGE,
+  DEFAULT_LOADER_TEXT,
+  Elements,
+  ElementsWithCallableStyle,
 } from "./constants";
 import classes from "./styles.module.scss";
 
