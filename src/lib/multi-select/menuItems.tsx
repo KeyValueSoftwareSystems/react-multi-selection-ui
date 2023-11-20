@@ -5,7 +5,7 @@ import {
   DEFAULT_EMPTY_LIST_MESSAGE,
   DEFAULT_LOADER_TEXT,
   Elements,
-  ElementsWithCallableStyle,
+  ElementsWithCallableStyle
 } from "./constants";
 import classes from "./styles.module.scss";
 
@@ -20,36 +20,36 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
     renderEmptyItem,
     renderLoader,
     onOptionClick,
-    styles = {},
+    styles = {}
   } = props;
   return (
     <>
       {list?.length && (list.length !== selectedIds.length || !hideSelected)
         ? list?.map(
-            (item: OptionType): JSX.Element =>
-              (((hideSelected && !selectedIds.includes(item.id)) ||
+          (item: OptionType): JSX.Element =>
+            (((hideSelected && !selectedIds.includes(item.id)) ||
                 !hideSelected) && (
-                <button
-                  key={item.id}
-                  className={classes.eachItem}
-                  onClick={(): void => onOptionClick(item.id)}
-                  style={getStyles(
-                    !selectedIds.includes(item.id)
-                      ? ElementsWithCallableStyle.UnSelectedMenuItem
-                      : ElementsWithCallableStyle.SelectedMenuItem,
-                    styles,
-                    item.id
-                  )}
-                  id={`option-card-${item.id}`}
-                  data-testid="option-card"
-                >
-                  {showCheckbox &&
+              <button
+                key={item.id}
+                className={classes.eachItem}
+                onClick={(): void => onOptionClick(item.id)}
+                style={getStyles(
+                  !selectedIds.includes(item.id)
+                    ? ElementsWithCallableStyle.UnSelectedMenuItem
+                    : ElementsWithCallableStyle.SelectedMenuItem,
+                  styles,
+                  item.id
+                )}
+                id={`option-card-${item.id}`}
+                data-testid="option-card"
+              >
+                {showCheckbox &&
                     (selectedIds.includes(item.id) ? (
                       <div
                         className={`${classes.checkbox} ${classes.icon}`}
                         style={{
                           backgroundImage: `url(${icon})`,
-                          ...styles[Elements.CheckedIcon],
+                          ...styles[Elements.CheckedIcon]
                         }}
                         id="checked-checkbox"
                       />
@@ -60,10 +60,10 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
                         id="unchecked-checkbox"
                       />
                     ))}
-                  <div id="label">{item.name}</div>
-                </button>
-              )) || <></>
-          )
+                <div id="label">{item.name}</div>
+              </button>
+            )) || <></>
+        )
         : !isLoading &&
           (renderEmptyItem || (
             <div className={classes.emptyList}>

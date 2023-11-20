@@ -28,7 +28,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     icons = {},
     onSearch = undefined,
     onItemClick = undefined,
-    setSelectedValues = undefined,
+    setSelectedValues = undefined
   } = props;
 
   const { Checked = CheckMark, Search, ChipClose, Arrow } = icons;
@@ -180,7 +180,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
             className={classes.rotation}
             style={{
               transform: `rotate(${isModalVisible ? "180deg" : "0deg"})`,
-              ...styles[Elements.ArrowIcon],
+              ...styles[Elements.ArrowIcon]
             }}
           />
         </button>

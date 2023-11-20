@@ -12,7 +12,7 @@ const Chips = (props: ChipListPropType): JSX.Element => {
     styles = {},
     icon,
     thresholdForBubble = 0,
-    showAllChips,
+    showAllChips
   } = props;
 
   const chipsToShow = useMemo(() => {
@@ -63,14 +63,14 @@ const Chips = (props: ChipListPropType): JSX.Element => {
       {!showAllChips &&
         !!thresholdForBubble &&
         list?.length > thresholdForBubble && (
-          <button
-            id="hidden-chip-count"
-            className={`${classes.buttonIcon} ${classes.hiddenChipsCount}`}
-            style={styles[Elements.HiddenChipsIndicator]}
-          >
+        <button
+          id="hidden-chip-count"
+          className={`${classes.buttonIcon} ${classes.hiddenChipsCount}`}
+          style={styles[Elements.HiddenChipsIndicator]}
+        >
             +{hiddenChipsCount}
-          </button>
-        )}
+        </button>
+      )}
     </>
   );
 };
