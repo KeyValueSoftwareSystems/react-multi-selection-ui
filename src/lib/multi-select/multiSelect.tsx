@@ -55,11 +55,11 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   }, [options]);
 
   useEffect(() => {
-    if (document) {
+    if (typeof document!== undefined) {
       document.addEventListener("mouseup", onMouseUp);
       return () => document.removeEventListener("mouseup", onMouseUp);
     }
-  }, [document]);
+  }, []);
 
   const handleSearch = (value: string): void => {
     if (onSearch) {
