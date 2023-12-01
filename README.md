@@ -299,7 +299,7 @@ The following code displays the icons that can be customized
 />
 ```
 
-- `Arrow` - Override the down arrow(right)
+- `Arrow` - Overrides the down arrow(right)
 - `ChipClose` - Overrides the chip close icon
-- `Checked` - Override the checkbox checked icon
-- `Search` - Override the search icon
+- `Checked` - Overrides the checkbox checked icon
+- `Search` - Overrides the search icon
