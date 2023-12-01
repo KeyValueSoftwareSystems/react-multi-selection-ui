@@ -44,7 +44,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   //ref for the modal
   const modalRef = useRef<HTMLDivElement>(null);
   // ref for the container having chips,search bar and arrow
-  const interactableAreaRef = useRef<HTMLDivElement>(null);
+  const intractableAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setList(options);
@@ -55,12 +55,11 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   }, [options]);
 
   useEffect(() => {
-    if (typeof document !== undefined) {
+    if (typeof document!== undefined) {
       document.addEventListener("mouseup", onMouseUp);
-
       return () => document.removeEventListener("mouseup", onMouseUp);
     }
-  }, [document]);
+  }, []);
 
   const handleSearch = (value: string): void => {
     if (onSearch) {
@@ -114,12 +113,11 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     if (
       event.target instanceof Node &&
       !modalRef?.current?.contains(event.target) &&
-      !interactableAreaRef?.current?.contains(event.target)
+      !intractableAreaRef?.current?.contains(event.target)
     ) {
       // to close the dropdown modal on clicking outside the modal and the search bar
       setIsModalVisible(false);
       setShowAllChips(false);
-      return;
     }
   };
 
@@ -137,11 +135,12 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     <div className={classes.container} style={styles[Elements.Container]}>
       <div
         className={`${classes.box} ${hasError && classes.errorBorder}`}
-        ref={interactableAreaRef}
+        ref={intractableAreaRef}
         style={styles[Elements.InputBox]}
         onClick={(): void => {
           setShowAllChips(true);
         }}
+        role="presentation"
       >
         <div className={classes.headSection}>
           {showChips && (
@@ -176,7 +175,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
           id="down-arrow"
         >
           <img
-            src={Arrow || DownArrow}
+            src={Arrow ?? DownArrow}
             className={classes.rotation}
             style={{
               transform: `rotate(${isModalVisible ? "180deg" : "0deg"})`,

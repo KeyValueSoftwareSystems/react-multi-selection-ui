@@ -24,12 +24,13 @@
     "url": "https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui"
   },
   "author": "Keyvalue",
-  "license": "",
+  "license": "MIT",
   "homepage": "https://github.com/KeyValueSoftwareSystems/react-multi-selection-ui",
   "keywords": [
     "library",
     "starter",
-    "es6"
+    "es6",
+    "nextjs"
   ],
   "devDependencies": {
     "@babel/cli": "^7.20.7",

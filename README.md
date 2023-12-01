@@ -22,6 +22,8 @@ npm install  @keyvaluesystems/react-multi-selection-ui-component
 
 You’ll need to install React separately since it isn't included in the package.
 
+Note for **Next.js** users, if you are using Next.js version 13 or later, you will have to use the `use client` feature to ensure proper compatibility.
+
 ## Usage
 
 React Multi Selection UI can run in a very basic mode by just providing the `options` like given below:
@@ -276,9 +278,9 @@ To customize the style of various components, you can use the following prop nam
 
 You can utilize the provided prop names to customize the style of individual items in the chip or each item in the menu. This can be achieved by passing a function that returns the desired style for each element.
 
-- `ChipComponent` - overrides the chip style
-- `SelectedMenuItem` - overrides the selected menu item styles
-- `UnSelectedMenuItem` - overrides the non selected item styles
+- `ChipComponent` - Overrides the chip style
+- `SelectedMenuItem` - Overrides the selected menu item styles
+- `UnSelectedMenuItem` - Overrides the non selected item styles
 
 ## Icon Customizations
 
@@ -297,7 +299,7 @@ The following code displays the icons that can be customized
 />
 ```
 
-- `Arrow` - override the down arrow(right)
-- `ChipClose` - overrides the chip close icon
-- `Checked` - override the checkbox checked icon
-- `Search` - override the search icon
+- `Arrow` - Overrides the down arrow(right)
+- `ChipClose` - Overrides the chip close icon
+- `Checked` - Overrides the checkbox checked icon
+- `Search` - Overrides the search icon
