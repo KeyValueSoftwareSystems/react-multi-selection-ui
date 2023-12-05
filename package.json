@@ -1,6 +1,6 @@
 {
   "name": "@keyvaluesystems/react-multi-selection-ui-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Multi Select UI Component",
   "main": "build/index.js",
   "source": "src/lib/index.tsx",
