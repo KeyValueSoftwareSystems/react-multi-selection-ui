@@ -160,6 +160,7 @@ The callback function which will be triggered on clicking the menu item row. Can
 </tr>
 <tr>
 <td><code><b>setSelectedValues?:</b> function</code></td>
+<td>
 The callback function which will be triggered on clicking the check box and chip's close button. Can be used for obtaining the selected id's
 </td>
 <td><code>undefined</code></td>
