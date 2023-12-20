@@ -1,5 +1,6 @@
-import React from "react";
-import { getStyles } from "./utils/utils";
+import React, { useMemo } from "react";
+import CheckMark from "../../assets/CheckBox.svg";
+import { getStyles, renderAsImage } from "./utils/utils";
 import { ModalProps, OptionType } from "./types";
 import {
   DEFAULT_EMPTY_LIST_MESSAGE,
@@ -22,6 +23,9 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
     onOptionClick,
     styles = {}
   } = props;
+
+  const renderOwnComponent = useMemo(()=> renderAsImage(icon), [icon]);
+
   return (
     <>
       {list?.length && (list.length !== selectedIds.length || !hideSelected)
@@ -31,7 +35,7 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
                 !hideSelected) && (
               <button
                 key={item.id}
-                className={classes.eachItem}
+                className={`${classes.eachItem} ${selectedIds.includes(item.id) && classes.selectedItem}`}
                 onClick={(): void => onOptionClick(item.id)}
                 style={getStyles(
                   !selectedIds.includes(item.id)
@@ -45,14 +49,16 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
               >
                 {showCheckbox &&
                     (selectedIds.includes(item.id) ? (
-                      <div
-                        className={`${classes.checkbox} ${classes.icon}`}
-                        style={{
-                          backgroundImage: `url(${icon})`,
-                          ...styles[Elements.CheckedIcon]
-                        }}
-                        id="checked-checkbox"
-                      />
+                      renderOwnComponent ?
+                        <div
+                          className={`${classes.checkbox} ${classes.icon}`}
+                          style={{
+                            backgroundImage: `url(${icon ?? CheckMark})`,
+                            ...styles[Elements.CheckedIcon]
+                          }}
+                          id="checked-checkbox"
+                        />
+                        : icon
                     ) : (
                       <div
                         className={`${classes.unchecked} ${classes.icon}`}
@@ -62,7 +68,7 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
                     ))}
                 <div id="label">{item.name}</div>
               </button>
-            )) || <></>
+            )) || <React.Fragment key={item.id}/>
         )
         : !isLoading &&
           (renderEmptyItem || (

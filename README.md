@@ -235,6 +235,13 @@ Provides you with an object to replace the default icons used.
 </td>
 <td><code>undefined</code></td>
 </tr>
+<tr>
+<td><code><b>clearSearchClick?:</b> function</code></td>
+<td>
+The callback function which will be triggered on clicking close icon inside search box
+</td>
+<td><code>undefined</code></td>
+</tr>
 </tbody>
 </table>
 
@@ -257,6 +264,7 @@ the below code shows all the overridable styles:
     SearchIcon?: {...styles},
     ArrowIcon?: {...styles},
     HiddenChipsIndicator?: {...styles},
+    ClearSearchIcon?: {....styles},
     SelectedMenuItem?: (id) => ({...styles}),
     UnSelectedMenuItem?: (id) => ({...styles}),
     ChipComponent?: (id) => ({...styles}),
@@ -270,9 +278,10 @@ To customize the style of various components, you can use the following prop nam
 - `Container`: Overrides the style of the multi-selection UI container.
 - `CheckedIcon`: Overrides the style of the checked icon.
 - `ChipCloseIcon`: Overrides the style of the close icon within the chip.
+- `ClearSearchIcon`: Overrides the style of the close icon within the search box.
 - `HelperText`: Overrides the style of the helper text.
 - `HiddenChipsIndicator`: Overrides the style of the bubble indicating the number of hidden chips if the thresholdForBubble prop has a value.
-- `InputBox`: Overrides the style of the box containing the chips and search bar.
+- `InputBox`: Overrides the style of the box containing the chips and search bar. Can be used to style the placeholder if the search is hidden.
 - `SearchIcon`: Overrides the style of the search icon.
 - `SearchComponent`: Overrides the styles of the search component.
 - `UnCheckedIcon`: Overrides the style of the unchecked box.
@@ -292,10 +301,11 @@ The following code displays the icons that can be customized
 <MultiSelection
  options={optionsArray}
  icons={{
-    Search?: url,
-    ChipClose?: url,
-    Checked?: url,
-    Arrow?: url
+    Search?: url || JSX.Element,
+    ChipClose?: url || JSX.Element,
+    Checked?: url || JSX.Element,
+    Arrow?: url || JSX.Element,
+    ClearSearch?: url || JSX.Element
  }}
 />
 ```
@@ -303,4 +313,5 @@ The following code displays the icons that can be customized
 - `Arrow` - Overrides the down arrow(right)
 - `ChipClose` - Overrides the chip close icon
 - `Checked` - Overrides the checkbox checked icon
+- `ClearSearch` - Overrides the close icon inside search box
 - `Search` - Overrides the search icon

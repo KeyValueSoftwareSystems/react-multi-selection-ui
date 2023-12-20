@@ -15,6 +15,7 @@
   font-size: inherit;
   font-family: "Poppins";
   background-color: inherit;
+  text-overflow: ellipsis;
 }
 .icon {
   width: 16px;
@@ -87,6 +88,9 @@
     opacity: 0.7;
   }
 }
+.selectedItem{
+  background-color: #D9E2F0;
+}
 .checkbox {
   width: 20px;
   height: 20px;
@@ -136,4 +140,7 @@
 }
 .elevatedContent {
   z-index: 1;
+}
+.label {
+  padding: 10px
 }

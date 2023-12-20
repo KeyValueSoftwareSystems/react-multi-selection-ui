@@ -1,9 +1,9 @@
 import React, { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import DownArrow from "../../assets/DropdownArrow.svg";
-import CheckMark from "../../assets/CheckBox.svg";
 import SearchComponent from "./searchComponent";
 import { MultiSelectPropType, OptionType } from "./types";
 import { DEFAULT_PLACEHOLDER, Elements } from "./constants";
+import { renderAsImage } from "./utils/utils";
 import classes from "./styles.module.scss";
 import Chips from "./chips";
 import MenuListing from "./menuItems";
@@ -28,11 +28,12 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     icons = {},
     onSearch = undefined,
     onItemClick = undefined,
-    setSelectedValues = undefined
+    setSelectedValues = undefined,
+    clearSearchClick = undefined
   } = props;
 
-  const { Checked = CheckMark, Search, ChipClose, Arrow } = icons;
-
+  const { Checked, Search, ChipClose, Arrow, ClearSearch } = icons;
+  const arrowIcon = Arrow;
   // to show/hide div containing the checkboxes
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [list, setList] = useState<OptionType[]>([]);
@@ -55,7 +56,7 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
   }, [options]);
 
   useEffect(() => {
-    if (typeof document!== undefined) {
+    if (typeof document!== 'undefined') {
       document.addEventListener("mouseup", onMouseUp);
       return () => document.removeEventListener("mouseup", onMouseUp);
     }
@@ -161,11 +162,12 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
               onFocus={triggerModalOpen}
               ref={inputRef}
               icon={Search}
+              onCloseClick={clearSearchClick}
+              closeIcon={ClearSearch}
             />
           )}
           {hideSearch && !selectedIds.length && (
-            // same style for the search box is used
-            <div style={styles[Elements.SearchComponent]}>{placeholder}</div>
+            <div className={`${classes.searchInput} ${classes.label}`}>{placeholder}</div>
           )}
         </div>
         <button
@@ -174,14 +176,16 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
           onClick={(e: MouseEvent<HTMLButtonElement>): void => onArrowClick(e)}
           id="down-arrow"
         >
-          <img
-            src={Arrow ?? DownArrow}
-            className={classes.rotation}
-            style={{
-              transform: `rotate(${isModalVisible ? "180deg" : "0deg"})`,
-              ...styles[Elements.ArrowIcon]
-            }}
-          />
+          {renderAsImage(arrowIcon)?
+            <img
+              src={arrowIcon as string ?? DownArrow}
+              className={classes.rotation}
+              style={{
+                transform: `rotate(${isModalVisible ? "180deg" : "0deg"})`,
+                ...styles[Elements.ArrowIcon]
+              }}
+            /> :
+            arrowIcon}
         </button>
       </div>
       {!isModalVisible && helperText && (

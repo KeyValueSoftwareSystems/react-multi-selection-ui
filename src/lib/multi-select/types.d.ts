@@ -18,6 +18,7 @@ export interface MultiSelectPropType {
   onSearch?: (value: string) => void;
   onItemClick?: (id: string | number) => void;
   setSelectedValues?: (ids: Array<string | number>) => void;
+  clearSearchClick?: () => void;
 }
 
 export type OptionType = {
@@ -30,15 +31,17 @@ export type SearchComponentPropType = {
   searchPlaceholder: string;
   styles?: StyleProp;
   showChips?: boolean;
-  icon?: string;
+  icon?: string | JSX.Element;
   onFocus: () => void;
   onSearch: (value: string) => void;
+  onCloseClick?:() => void,
+  closeIcon?: string | JSX.Element
 };
 
 export interface ChipListPropType {
   list: OptionType[];
   styles?: StyleProp;
-  icon?: string;
+  icon?: string | JSX.Element;
   onClick: (event: MouseEvent<HTMLButtonElement>, id: string | number) => void;
   thresholdForBubble?: number;
   showAllChips: boolean;
@@ -58,13 +61,15 @@ export type StyleProp = {
   SearchIcon?: object;
   ArrowIcon?: object;
   HiddenChipsIndicator?: object;
+  ClearSearchIcon?: object;
 };
 
 export type IconsProps = {
-  Search?: string;
-  ChipClose?: string;
-  Checked?: string;
-  Arrow?: string;
+  Search?: string | JSX.Element;
+  ChipClose?: string | JSX.Element;
+  Checked?: string | JSX.Element;
+  Arrow?: string | JSX.Element;
+  ClearSearch?: string | JSX.Element;
 };
 
 export type ModalProps = {
@@ -72,7 +77,7 @@ export type ModalProps = {
   selectedIds: (string | number)[];
   hideSelected: boolean;
   showCheckbox: boolean;
-  icon: string;
+  icon?: string | JSX.Element;
   isLoading: boolean;
   renderEmptyItem?: JSX.Element;
   renderLoader?: JSX.Element;

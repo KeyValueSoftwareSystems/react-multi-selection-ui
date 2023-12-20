@@ -1,6 +1,7 @@
 import React, { ForwardedRef, forwardRef, useEffect, useState } from "react";
 import searchIcon from "../../assets/Search.svg";
-import closeIcon from "../../assets/x-circle.svg";
+import defaultCloseIcon from "../../assets/x-circle.svg";
+import { renderAsImage } from './utils/utils'
 import { SearchComponentPropType } from "./types";
 import { Elements } from "./constants";
 import classes from "./styles.module.scss";
@@ -9,24 +10,30 @@ const SearchComponent = (
   props: SearchComponentPropType,
   ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element => {
-  const { onSearch, searchPlaceholder, styles = {}, onFocus, icon } = props;
+  const { onSearch, searchPlaceholder, styles = {}, onFocus, icon, onCloseClick, closeIcon } = props;
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     onSearch(searchTerm);
   }, [searchTerm]);
 
+  const onCloseButtonClick = (): void =>{
+    setSearchTerm("");
+    if(onCloseClick) onCloseClick();
+  }
+
   return (
     <div
       className={classes.searchContainer}
       style={styles[Elements.SearchComponent]}
     >
-      <img
-        src={icon ?? searchIcon}
-        alt=""
-        className={classes.chipClose}
-        style={styles[Elements.SearchIcon]}
-      />
+      {renderAsImage(icon)?
+        <img
+          src={icon as string ?? searchIcon}
+          alt=""
+          className={classes.chipClose}
+          style={styles[Elements.SearchIcon]}
+        />: icon}
       <input
         type="text"
         onChange={(e): void => setSearchTerm(e.target.value)}
@@ -41,9 +48,17 @@ const SearchComponent = (
         <button
           id="clear-search-button"
           className={`${classes.buttonIcon} ${classes.icon}`}
-          style={{ backgroundImage: `url(${closeIcon})` }}
-          onClick={(): void => setSearchTerm("")}
-        />
+          onClick={onCloseButtonClick}
+        >
+          {renderAsImage(closeIcon)?
+            <img
+              src={closeIcon as string ?? defaultCloseIcon}
+              alt=""
+              className={classes.chipClose}
+              style={styles[Elements.ClearSearchIcon]}
+            /> :
+            closeIcon}
+        </button>
       )}
     </div>
   );

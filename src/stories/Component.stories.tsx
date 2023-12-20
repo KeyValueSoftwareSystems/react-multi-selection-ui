@@ -142,6 +142,7 @@ LimitingNumberOfVisibleChips.args = {
   hideSelected: false,
   hasError: false,
   thresholdForBubble: 2,
+  showCheckbox: false
 };
 
 export const WithHelperText = Template.bind({});
@@ -303,6 +304,7 @@ WithLoadingBar.args = {
       name: "Read books",
     },
   ],
+  hideSearch: true,
   onSearch: undefined,
   isLoading: true,
 };
