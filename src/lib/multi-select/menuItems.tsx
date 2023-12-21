@@ -24,7 +24,7 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
     styles = {}
   } = props;
 
-  const renderOwnComponent = useMemo(()=> renderAsImage(icon), [icon]);
+  const showDefault = useMemo(()=> renderAsImage(icon), [icon]);
 
   return (
     <>
@@ -49,7 +49,7 @@ const OptionListingModal = (props: ModalProps): JSX.Element => {
               >
                 {showCheckbox &&
                     (selectedIds.includes(item.id) ? (
-                      renderOwnComponent ?
+                      showDefault ?
                         <div
                           className={`${classes.checkbox} ${classes.icon}`}
                           style={{

@@ -264,7 +264,7 @@ the below code shows all the overridable styles:
     SearchIcon?: {...styles},
     ArrowIcon?: {...styles},
     HiddenChipsIndicator?: {...styles},
-    ClearSearchIcon?: {....styles},
+    ClearSearchIcon?: {...styles},
     SelectedMenuItem?: (id) => ({...styles}),
     UnSelectedMenuItem?: (id) => ({...styles}),
     ChipComponent?: (id) => ({...styles}),

@@ -132,15 +132,18 @@ const MultiSelect = (props: MultiSelectPropType): JSX.Element => {
     [options, selectedIds]
   );
 
+  const onClick = (): void =>{
+    setShowAllChips(true);
+    setIsModalVisible(true);
+  }
+
   return (
     <div className={classes.container} style={styles[Elements.Container]}>
       <div
         className={`${classes.box} ${hasError && classes.errorBorder}`}
         ref={intractableAreaRef}
         style={styles[Elements.InputBox]}
-        onClick={(): void => {
-          setShowAllChips(true);
-        }}
+        onClick={onClick}
         role="presentation"
       >
         <div className={classes.headSection}>

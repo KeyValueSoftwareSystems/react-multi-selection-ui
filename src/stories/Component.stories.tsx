@@ -308,3 +308,33 @@ WithLoadingBar.args = {
   onSearch: undefined,
   isLoading: true,
 };
+
+
+export const HiddenSearchBar = Template.bind({});
+HiddenSearchBar.args = {
+  options: [
+    {
+      id: 1,
+      name: "Upload new pictures",
+    },
+    {
+      id: 2,
+      name: "Pay rent",
+    },
+    {
+      id: 3,
+      name: "Go Shopping",
+    },
+    {
+      id: 4,
+      name: "Call friends",
+    },
+    {
+      id: 5,
+      name: "Read books",
+    },
+  ],
+  hideSearch: true,
+  onSearch: undefined,
+  isLoading: true,
+};
