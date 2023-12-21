@@ -34,7 +34,7 @@ export type SearchComponentPropType = {
   icon?: string | JSX.Element;
   onFocus: () => void;
   onSearch: (value: string) => void;
-  onCloseClick?:() => void,
+  onCloseClick?:() => void;
   closeIcon?: string | JSX.Element
 };
 
