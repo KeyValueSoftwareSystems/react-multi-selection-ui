@@ -6,6 +6,7 @@
   padding: 0px 12px;
   align-items: center;
   position: relative;
+  flex: 1
 }
 .searchInput {
   width: 100%;
@@ -16,6 +17,7 @@
   font-family: "Poppins";
   background-color: inherit;
   text-overflow: ellipsis;
+  min-width: 25px;
 }
 .icon {
   width: 16px;
@@ -122,6 +124,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  flex: 1
 }
 .error {
   color: #ff0000;
