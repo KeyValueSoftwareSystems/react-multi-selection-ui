@@ -15,30 +15,30 @@ const Template: ComponentStory<typeof Component> = (props) => (
   <Component {...props} />
 );
 
+const defaultOptions =[{
+    id: 1,
+    name: "Upload new pictures",
+  },
+  {
+    id: 2,
+    name: "Pay rent",
+  },
+  {
+    id: 3,
+    name: "Go Shopping",
+  },
+  {
+    id: 4,
+    name: "Call friends",
+  },
+  {
+    id: 5,
+    name: "Read books",
+  }];
+
 export const WithDefaultProps = Template.bind({});
 WithDefaultProps.args = {
-  options: [
-    {
-      id: 1,
-      name: "Upload new pictures",
-    },
-    {
-      id: 2,
-      name: "Pay rent",
-    },
-    {
-      id: 3,
-      name: "Go Shopping",
-    },
-    {
-      id: 4,
-      name: "Call friends",
-    },
-    {
-      id: 5,
-      name: "Read books",
-    },
-  ],
+  options: defaultOptions,
 };
 
 export const WithOptionalProps = Template.bind({});
@@ -142,6 +142,7 @@ LimitingNumberOfVisibleChips.args = {
   hideSelected: false,
   hasError: false,
   thresholdForBubble: 2,
+  showCheckbox: false
 };
 
 export const WithHelperText = Template.bind({});
@@ -303,6 +304,30 @@ WithLoadingBar.args = {
       name: "Read books",
     },
   ],
+  hideSearch: true,
   onSearch: undefined,
   isLoading: true,
+};
+
+
+export const HiddenSearchBar = Template.bind({});
+HiddenSearchBar.args = {
+  options: defaultOptions,
+  hideSearch: true,
+  onSearch: undefined,
+  isLoading: true,
+};
+
+
+
+export const IconsAsJSXElement = Template.bind({});
+IconsAsJSXElement.args = {
+  options: defaultOptions,
+  icons:{
+    Arrow: <div style={{ width: 0,
+      height: 0,
+      borderLeft: '15px solid transparent',
+      borderRight: '15px solid transparent',
+      borderTop:' 20px solid #555'}} />
+  }
 };

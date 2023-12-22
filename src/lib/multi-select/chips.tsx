@@ -2,7 +2,7 @@ import React, { MouseEvent, useMemo } from "react";
 import closeIcon from "../../assets/x.svg";
 import { ChipListPropType, OptionType } from "./types";
 import { Elements, ElementsWithCallableStyle } from "./constants";
-import { getStyles } from "./utils/utils";
+import { getStyles, renderAsImage } from "./utils/utils";
 import classes from "./styles.module.scss";
 
 const Chips = (props: ChipListPropType): JSX.Element => {
@@ -50,12 +50,14 @@ const Chips = (props: ChipListPropType): JSX.Element => {
                 onClick(e, item.id)
               }
             >
-              <img
-                src={icon ?? closeIcon}
-                alt=""
-                className={classes.chipClose}
-                style={styles[Elements.ChipCloseIcon]}
-              />
+              {renderAsImage(icon) ?
+                <img
+                  src={icon as string ?? closeIcon}
+                  alt=""
+                  className={classes.chipClose}
+                  style={styles[Elements.ChipCloseIcon]}
+                />:
+                icon}
             </button>
           </div>
         )

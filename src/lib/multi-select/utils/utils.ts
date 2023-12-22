@@ -6,10 +6,11 @@ export const getStyles = (
   styles: StyleProp,
   id: string | number
 ): object => {
-  // id will be available for styles given to user as functions
   const getElementStyle = styles[element];
   if (getElementStyle) {
     return getElementStyle(id);
   }
   return {};
 };
+
+export const renderAsImage = (icon?: JSX.Element | string): boolean => typeof icon === 'undefined' || typeof icon === 'string'

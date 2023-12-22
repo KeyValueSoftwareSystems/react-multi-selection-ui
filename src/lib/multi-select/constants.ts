@@ -15,6 +15,7 @@ export enum Elements {
   SearchIcon = "SearchIcon",
   ArrowIcon = "ArrowIcon",
   HiddenChipsIndicator = "HiddenChipsIndicator",
+  ClearSearchIcon = "ClearSearchIcon"
 }
 
 export enum ElementsWithCallableStyle {
