@@ -17,7 +17,7 @@ const SearchComponent = (
     onSearch(searchTerm);
   }, [searchTerm]);
 
-  const onCloseButtonClick = (): void =>{
+  const onCloseButtonClick = (): void => {
     setSearchTerm("");
     if(onCloseClick) onCloseClick();
   }

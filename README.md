@@ -301,11 +301,11 @@ The following code displays the icons that can be customized
 <MultiSelection
  options={optionsArray}
  icons={{
-    Search?: url || JSX.Element,
+    Arrow?: url || JSX.Element,
     ChipClose?: url || JSX.Element,
     Checked?: url || JSX.Element,
-    Arrow?: url || JSX.Element,
-    ClearSearch?: url || JSX.Element
+    ClearSearch?: url || JSX.Element,
+    Search?: url || JSX.Element
  }}
 />
 ```
